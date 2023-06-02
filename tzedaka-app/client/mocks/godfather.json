@@ -1,0 +1,32 @@
+{
+  "mail": "jessica.jones@gmail.com",
+  "name": "Jessica",
+  "surname": "Jones",
+  "photoUrl": "",
+  "godchildren": [
+    {
+      "name": "Joseph",
+      "surname": "Kersinsky",
+      "age": 13,
+      "money": 50000,
+      "birthday": "13-05-2008",
+      "startDonationDate": "28-04-2014",
+      "lastDonationDate": "10-06-2023",
+      "programs": [{ "programId": 1, "program": "primaria" }],
+      "title": "title 1",
+      "story": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+      "name": "Delfina",
+      "surname": "Israelsky",
+      "age": 10,
+      "money": 50000,
+      "birthday": "13-05-2000",
+      "startDonationDate": "19-02-2014",
+      "lastDonationDate": "10-06-2023",
+      "programs": [{ "programId": 1, "program": "universidad" }],
+      "title": "title 2",
+      "story": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    }
+  ]
+}
