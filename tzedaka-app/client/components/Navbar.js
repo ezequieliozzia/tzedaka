@@ -32,12 +32,18 @@ const Navbar = () => {
         </div>
       </div>
       <div>
-        <a
+        <img
+          src={"https://cdn.onlinewebfonts.com/svg/img_24787.png"}
+          style={{ height: "30px" }}
+          alt={""}
+          loading={"lazy"}
+        />
+        {/* <a
           href="#"
           className="inline-block text-l font-semibold px-4 py-2 leading-none border rounded text-black border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
         >
           Donar
-        </a>
+        </a> */}
       </div>
     </nav>
   );
