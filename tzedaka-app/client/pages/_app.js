@@ -1,6 +1,7 @@
 // _app.js
-import Layout from "@/components/Layout";
+import "../styles/globals.css";
 
+import Layout from "@/components/Layout";
 const MyApp = ({ Component, pageProps }) => {
   return (
     <Layout>
