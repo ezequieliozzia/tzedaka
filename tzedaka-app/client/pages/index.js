@@ -1,33 +1,27 @@
 import Layout from "@/components/Layout";
 import React from "react";
 import Image from "next/image";
+import bg from "../../images/kid-transformed.png";
 
 const index = () => {
   return (
     <>
-      <div className="flex items-center justify-center">
-        <figure>
-          <Image
-            src={"/kid.png"}
-            width={1800}
-            height={700}
-            border={0}
-            // height={500}
-            alt="Picture of the author"
-          />
-          <figcaption>An elephant at sunset</figcaption>
-        </figure>
-      </div>
-      <div className="absolute inset-0">
-        {/* <Image src="/kid.png" alt="background image" fill /> */}
-      </div>
-      <div className="relative z-10 flex flex-col items-center justify-center h-full">
-        <h1 className="text-2xl font-bold text-gray-200">
-          Next JS 13 Background Image with Tailwind CSS{" "}
-        </h1>
-        <p className="mt-4 text-sm text-white">
-          lorem ipsom Next JS 13 Background Image with Tailwind CSS
-        </p>
+      <div
+        className="flex items-center justify-end bg-cover h-screen"
+        style={{
+          backgroundImage: `url(${bg.src})`,
+        }}
+      >
+        <div className="flex flex-col items-center justify-around w-1/4 h-1/4 bg-white mr-20 ">
+          <p className="mt-4 text-2xl font-sans font-bold">BIENVENIDO</p>
+          <p className="m-6 text-l font-sans">
+            Gracias por entrar a esta página, donde tenes la posibilidad de
+            cambiar una vida. Porque eso es lo que hace un Padrino: darle a un
+            chico, a un joven, una oportunidad; acompañarlo en su educación y
+            sostenerlo dentro de un proyecto que le abre puertas: las de un
+            futuro distinto.
+          </p>
+        </div>
       </div>
     </>
   );
