@@ -3,7 +3,7 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-white-500 p-6">
+    <nav className="flex items-center justify-between flex-wrap bg-transparent p-6">
       <div>
         <img
           src={
@@ -14,7 +14,7 @@ const Navbar = () => {
           loading={"lazy"}
         />
       </div>
-      <div className="flex items-center justify-between flex-wrap space-x-5 list-none bg-white">
+      <div className="flex items-center justify-between flex-wrap space-x-5 list-none bg-transparent">
         <div className="pr-2 text-l font-semibold text-black">
           <Link href={"/"}>
             <li>Inicio</li>
