@@ -15,7 +15,7 @@ const Layout = ({ children, isLogged }) => {
             <link rel="shortcut icon" href="/public/favicon.png" />
         </Head>
       <Navbar isLogged={isLogged} />
-        <main>
+        <main className="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200">
             {children}
         </main>
       <Footer />

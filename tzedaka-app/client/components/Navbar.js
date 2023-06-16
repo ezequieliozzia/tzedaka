@@ -13,7 +13,7 @@ const Navbar = ({isLogged}) => {
     };
 
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-white-500 p-6">
+    <nav className="flex items-center justify-between flex-wrap bg-transparent p-6">
       <div>
         <Image
           src="https://tzedaka.org.ar/wp-content/uploads/2017/12/logo-tzedaka.png"
