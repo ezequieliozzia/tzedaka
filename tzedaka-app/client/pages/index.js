@@ -3,7 +3,7 @@ import React from "react";
 import { useUser } from '@clerk/nextjs';
 import bg from "../../images/kid-transformed.png";
 
-const index = () => {
+const Index = () => {
     const { user } = useUser();
     console.log(user);
 
@@ -30,5 +30,5 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
 
