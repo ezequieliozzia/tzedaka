@@ -10,6 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      MyFont: ["raleway", "Helvetica", "Arial", "sans-serif"],
+    },
   },
   plugins: [],
 };
