@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 import json
 from pprint import pprint
 from simple_salesforce import Salesforce, format_soql
@@ -16,10 +16,21 @@ sf = Salesforce( username        = creds['login']['username'],
                  consumer_secret = creds['login']['consumer_secret'] )
 
 customEntities = sf.query("SELECT Id, Name  FROM Beneficiario__c LIMIT 10")
-acountEntities = sf.query("SELECT Id, Name  FROM Account LIMIT 10")
+accountEntities = sf.query("SELECT Id, Name  FROM Account LIMIT 10")
 
-# app = Flask(__name__)
+activeUser = 0
 
-# @app.route("/")
-# def hello_world():
-#     return "<p>Aguante el backend!</p>"
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Home"
+
+@app.route("/getUser", methods=['GET'])
+def getUser():
+    return accountEntities
+
+@app.route("/<int:ActiveUser>", methods=['POST'])
+def setUser(ActiveUser):
+    activeUser = ActiveUser
+    return jsonify({"ActiveUser": activeUser})
