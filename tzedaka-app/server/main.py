@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+from flask_cors import CORS, cross_origin
 import json
 from pprint import pprint
 from simple_salesforce import Salesforce, format_soql
@@ -21,16 +22,21 @@ accountEntities = sf.query("SELECT Id, Name  FROM Account LIMIT 10")
 activeUser = 0
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route("/")
+@cross_origin()
 def home():
     return "Home"
 
 @app.route("/getUser", methods=['GET'])
+@cross_origin()
 def getUser():
     return accountEntities
 
 @app.route("/<int:ActiveUser>", methods=['POST'])
+@cross_origin()
 def setUser(ActiveUser):
     activeUser = ActiveUser
     return jsonify({"ActiveUser": activeUser})
