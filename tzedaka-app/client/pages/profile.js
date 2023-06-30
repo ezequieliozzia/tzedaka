@@ -9,7 +9,7 @@ const Profile = () => {
 
   useEffect(() => {
     async function fetchData() {
-      await fetch("http://localhost:5000/getUser", {
+      await fetch("/api/getUser", {
         method: "GET",
         cache: "no-store",
       })
