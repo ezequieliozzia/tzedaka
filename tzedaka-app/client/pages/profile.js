@@ -1,10 +1,11 @@
 import Godchild from "@/components/Godchild";
 import Godfather from "@/components/Godfather";
 import { useState, useEffect } from "react";
+import { useUser } from "@clerk/nextjs";
 
 const Profile = () => {
-  // console.log("Arranca el fetch");
-
+  const { user } = useUser();
+  console.log("user de clerk", user);
   const [users, setUsers] = useState([]);
 
   useEffect(() => {

@@ -1,9 +1,12 @@
 import Layout from "@/components/Layout";
 import React from "react";
 import Image from "next/image";
+import { useUser } from "@clerk/nextjs";
 import bg from "../../images/kid-transformed.png";
 
-const index = () => {
+const Index = () => {
+  const { user } = useUser();
+  console.log(user);
   return (
     <>
       <div
@@ -27,4 +30,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
