@@ -2,7 +2,7 @@ import Layout from "@/components/Layout";
 import React from "react";
 import Image from "next/image";
 import { useUser } from "@clerk/nextjs";
-import bg from "../../images/kid-transformed.png";
+import bg from "../images/kid-transformed.png";
 
 const Index = () => {
   const { user } = useUser();
