@@ -1,5 +1,5 @@
 import React from "react";
-import image from "../../images/kid.png";
+import image from "../../images/kid-transformed.png";
 
 const programa_1 = {
   title: "Title programa 1",
@@ -10,6 +10,26 @@ Occaecat officia ex cillum mollit tempor culpa minim laboris. Veniam velit exerc
 const Programs = () => {
   return (
     <>
+      <div
+        style={{
+          backgroundColor: "white",
+          padding: "1% 2%",
+          display: "inline-block",
+        }}
+      >
+        <span
+          style={{
+            color: "#000",
+            fontFamily: "Abhaya Libre ExtraBold",
+            fontSize: "30px",
+            fontStyle: "normal",
+            fontWeight: "800",
+            lineHeight: "22px",
+          }}
+        >
+          Apadrinar un chico transforma una vida!
+        </span>
+      </div>
       <Card programa={programa_1} />
       <Card programa={programa_1} />
       <Card programa={programa_1} />
@@ -17,9 +37,7 @@ const Programs = () => {
   );
 };
 
-const Card = ({
-  programa
-}) => {
+const Card = ({ programa }) => {
   return (
     <div
       style={{
@@ -50,6 +68,7 @@ const Card = ({
       </span>
       <img style={{ width: "50%" }} src={image.src} alt="IMAGEN" />
       <p>{programa.text}</p>
+      <a className="hiperlink" href="/">Conoce más</a>
     </div>
   );
 };

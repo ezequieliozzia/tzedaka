@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.hiperlink {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.hiperlink:hover {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  
+.hiperlink:visited {
+    color: #800080;
+}
