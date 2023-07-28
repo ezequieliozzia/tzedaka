@@ -1,8 +1,9 @@
 import Layout from "@/components/Layout";
 import React from "react";
 import Image from "next/image";
-// import bg from "../../images/kid-transformed.png";
-import bg from "../../images/children-playing.jpg";
+import { useUser } from "@clerk/nextjs";
+// import bg from "../images/kid-transformed.png";
+import bg from "../images/children-playing.jpg";
 import { Roboto } from "next/font/google";
 
 const roboto = Roboto({
@@ -11,14 +12,18 @@ const roboto = Roboto({
   display: "swap",
 });
 
-const index = () => {
+const Index = () => {
+  const { user } = useUser();
+  console.log(user);
   return (
-    <>
+    <div className="flex ">
       <div
-        className="flex items-center justify-end bg-cover h-screen"
+        className="flex items-center justify-end bg-cover mx-6"
         style={{
-          backgroundColor: "#000",
-          filter: "brightness(50%)",
+          height: "84vh",
+          borderRadius: "0.5rem",
+          // backgroundColor: "#000",
+          // filter: "brightness(50%)",
           // opacity: "0.5",
           backgroundImage: `url(${bg.src})`,
         }}
@@ -41,7 +46,7 @@ const index = () => {
           </p>
         </div>
       </div>
-
+      {/* 
       <div
         className={`flex flex-col items-center justify-center h-96 bg-gray-100 ${roboto.className}`}
       >
@@ -66,9 +71,9 @@ const index = () => {
           reciben becas, contención y orientación que cambian su vida para
           siempre.
         </p>
-      </div>
-    </>
+      </div> */}
+    </div>
   );
 };
 
-export default index;
+export default Index;
