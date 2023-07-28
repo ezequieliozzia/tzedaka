@@ -1,5 +1,6 @@
 import React from "react";
 import image from "../../images/kid-transformed.png";
+import programs from "../../public/mocks/programs.json"
 
 const programa_1 = {
   title: "Title programa 1",
@@ -30,9 +31,12 @@ const Programs = () => {
           Apadrinar un chico transforma una vida!
         </span>
       </div>
-      <Card programa={programa_1} />
-      <Card programa={programa_1} />
-      <Card programa={programa_1} />
+      {
+        programs.map((programa) => {
+            return <Card programa={programa} />
+        }
+        )
+    }
     </>
   );
 };
@@ -64,11 +68,11 @@ const Card = ({ programa }) => {
           lineHeight: "22px",
         }}
       >
-        {programa.title}
+        {programa.programName}
       </span>
       <img style={{ width: "50%" }} src={image.src} alt="IMAGEN" />
-      <p>{programa.text}</p>
-      <a className="hiperlink" href="/">Conoce más</a>
+      <p>{programa.programDescription}</p>
+      <a className="hiperlink" href={`/programs/details/${programa.programId}`} >Conoce más</a>
     </div>
   );
 };
