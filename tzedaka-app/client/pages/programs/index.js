@@ -71,7 +71,7 @@ const Card = ({ programa }) => {
         {programa.programName}
       </span>
       <img style={{ width: "50%" }} src={image.src} alt="IMAGEN" />
-      <p>{programa.programDescription}</p>
+      <p style={{ margin: "0 20%"}}>{programa.programDescription}</p>
       <a className="hiperlink" href={`/programs/details/${programa.programId}`} >Conoce más</a>
     </div>
   );
