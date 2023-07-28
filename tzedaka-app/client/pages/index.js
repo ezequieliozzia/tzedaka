@@ -2,7 +2,7 @@ import Layout from "@/components/Layout";
 import React from "react";
 import Image from "next/image";
 // import bg from "../../images/kid-transformed.png";
-import bg from "../../images/kid-school.jpg";
+import bg from "../../images/children-playing.jpg";
 import { Roboto } from "next/font/google";
 
 const roboto = Roboto({
@@ -17,22 +17,27 @@ const index = () => {
       <div
         className="flex items-center justify-end bg-cover h-screen"
         style={{
+          backgroundColor: "#000",
+          filter: "brightness(50%)",
+          // opacity: "0.5",
           backgroundImage: `url(${bg.src})`,
         }}
       >
-        <div className="flex flex-col items-center justify-center w-1/4 h-1/3 bg-white mr-20 rounded-md">
-          <p className={`mt-4 text-4xl font-bold ${roboto.className}`}>
+        <div className="flex flex-col items-center justify-center w-1/4 h-1/3 bg-transparent mr-20 rounded-md">
+          <p
+            className={`mt-4 text-4xl font-bold text-white ${roboto.className}`}
+          >
             ¡BIENVENIDO!
           </p>
-          <p className={`m-6 text-xl ${roboto.className}`}>
+          <p className={`m-6 text-xl text-white ${roboto.className}`}>
             Gracias por entrar a esta página, donde tenés la posibilidad de
-            cambiar una vida ❤️. En esencia, eso es lo que hace un{" "}
+            cambiar una vida. En esencia, eso es lo que hace un{" "}
             <i>
               <b>Padrino</b>
             </i>
             : darle a un chico o a un joven, una oportunidad; acompañarlo en su
             educación y sostenerlo dentro de un proyecto que le abre puertas:
-            las de un futuro distinto 🚀.
+            las de un futuro distinto.
           </p>
         </div>
       </div>
