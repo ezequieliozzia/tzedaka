@@ -7,6 +7,7 @@ const Profile = () => {
   const { user } = useUser();
   console.log("user de clerk", user);
   const [users, setUsers] = useState([]);
+  const [profileInfo, setProfileInfo] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -21,6 +22,23 @@ const Profile = () => {
         });
     }
     fetchData();
+
+    async function fetchProfileInfo() {
+      await fetch("/api/contactInfo", {
+        method: "POST",
+        cache: "no-store",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: "testemail@ffg.com" }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("contactInfo: ", data);
+          setProfileInfo(data);
+        });
+    }
+    fetchProfileInfo();
   }, []);
 
   return (
