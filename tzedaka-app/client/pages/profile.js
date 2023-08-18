@@ -43,10 +43,11 @@ const Profile = () => {
 
   return (
     <>
-      <Godfather></Godfather>
-      <div className="flex items-center justify-center">
-        <Godchild></Godchild>
-      </div>
+      <Godfather userInfo={user} profileInfo={profileInfo} />
+      {profileInfo["ahijados"] &&
+        profileInfo["ahijados"].map((x) => {
+          return <Godchild name={x} />;
+        })}
     </>
   );
 };
