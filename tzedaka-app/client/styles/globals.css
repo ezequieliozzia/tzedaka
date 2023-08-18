@@ -3,15 +3,42 @@
 @tailwind utilities;
 
 .hiperlink {
-    color: #007bff;
-    text-decoration: underline;
+  color: #007bff;
+  text-decoration: underline;
 }
 
 .hiperlink:hover {
-    color: #0056b3;
-    text-decoration: none;
-  }
-  
+  color: #0056b3;
+  text-decoration: none;
+}
+
 .hiperlink:visited {
-    color: #800080;
+  color: #800080;
+}
+
+.program-container {
+  position: relative;
+  padding-bottom: 1%;
+  background-image: url("../public/kid.png");
+  background-size: cover;
+}
+
+.program-container::before {
+  content: ""; /* Asegúrate de agregar esta propiedad */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../public/kid.png");
+  background-size: cover;
+  z-index: -1; /* Asegúrate de colocar el pseudo-elemento detrás del contenido */
+}
+
+.program-content {
+  padding: 1% 1%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  opacity: 1;
 }

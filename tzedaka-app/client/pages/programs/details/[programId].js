@@ -1,44 +1,46 @@
 import { useRouter } from "next/router";
 import programs from "../../../public/mocks/programs.json";
+import avatarBoy from "../../../public/avatar boy.png";
+import avatarGirl from "../../../public/avatar girl.png";
 
 const kids = [
   {
-    avatar: "Some",
+    avatar: avatarBoy,
     name: "Juan",
     title: "El pequeño futbolista",
     description:
       "Cupidatat aliquip dolore eu deserunt laborum esse veniam non non nulla nisi ea. Cillum Lorem cillum mollit do elit ipsum est nostrud ad consequat commodo tempor. Officia aliquip id aliqua sunt nostrud laboris excepteur eu cillum est esse. Fugiat consectetur laborum aliqua culpa in amet aute. Elit ex ullamco duis ut laboris enim officia officia adipisicing et. Voluptate do in fugiat eiusmod veniam ex culpa ipsum cillum ullamco deserunt cupidatat id. Exercitation Lorem amet occaecat esse.",
   },
   {
-    avatar: "Some",
+    avatar: avatarBoy,
     name: "Juan",
     title: "Con ganas de progresar",
     description:
       "Cupidatat aliquip dolore eu deserunt laborum esse veniam non non nulla nisi ea. Cillum Lorem cillum mollit do elit ipsum est nostrud ad consequat commodo tempor. Officia aliquip id aliqua sunt nostrud laboris excepteur eu cillum est esse. Fugiat consectetur laborum aliqua culpa in amet aute. Elit ex ullamco duis ut laboris enim officia officia adipisicing et. Voluptate do in fugiat eiusmod veniam ex culpa ipsum cillum ullamco deserunt cupidatat id. Exercitation Lorem amet occaecat esse.",
   },
   {
-    avatar: "Some",
+    avatar: avatarGirl,
     name: "Juan",
     title: "El pequeño futbolista",
     description:
       "Cupidatat aliquip dolore eu deserunt laborum esse veniam non non nulla nisi ea. Cillum Lorem cillum mollit do elit ipsum est nostrud ad consequat commodo tempor. Officia aliquip id aliqua sunt nostrud laboris excepteur eu cillum est esse. Fugiat consectetur laborum aliqua culpa in amet aute. Elit ex ullamco duis ut laboris enim officia officia adipisicing et. Voluptate do in fugiat eiusmod veniam ex culpa ipsum cillum ullamco deserunt cupidatat id. Exercitation Lorem amet occaecat esse.",
   },
   {
-    avatar: "Some",
+    avatar: avatarBoy,
     name: "Juan",
     title: "El pequeño futbolista",
     description:
       "Cupidatat aliquip dolore eu deserunt laborum esse veniam non non nulla nisi ea. Cillum Lorem cillum mollit do elit ipsum est nostrud ad consequat commodo tempor. Officia aliquip id aliqua sunt nostrud laboris excepteur eu cillum est esse. Fugiat consectetur laborum aliqua culpa in amet aute. Elit ex ullamco duis ut laboris enim officia officia adipisicing et. Voluptate do in fugiat eiusmod veniam ex culpa ipsum cillum ullamco deserunt cupidatat id. Exercitation Lorem amet occaecat esse.",
   },
   {
-    avatar: "Some",
+    avatar: avatarGirl,
     name: "Juan",
     title: "El pequeño futbolista",
     description:
       "Cupidatat aliquip dolore eu deserunt laborum esse veniam non non nulla nisi ea. Cillum Lorem cillum mollit do elit ipsum est nostrud ad consequat commodo tempor. Officia aliquip id aliqua sunt nostrud laboris excepteur eu cillum est esse. Fugiat consectetur laborum aliqua culpa in amet aute. Elit ex ullamco duis ut laboris enim officia officia adipisicing et. Voluptate do in fugiat eiusmod veniam ex culpa ipsum cillum ullamco deserunt cupidatat id. Exercitation Lorem amet occaecat esse.",
   },
   {
-    avatar: "Some",
+    avatar: avatarGirl,
     name: "Juan",
     title: "El pequeño futbolista",
     description:
@@ -56,16 +58,8 @@ const Post = () => {
 
   return (
     <div>
-      <div>
-        <div
-          style={{
-            backgroundColor: "rgba(255, 255, 255, 0.60)",
-            padding: "1% 1%",
-            display: "flex",
-            justifyContent: "center",
-            fillOpacity: "0.6",
-          }}
-        >
+      <div className="program-container">
+        <div className="program-content">
           <span
             style={{
               color: "#000",
@@ -178,10 +172,14 @@ const Post = () => {
                     alignItems: "center",
                   }}
                 >
-                  <span style={{ display: "flex", justifyContent: "center" }}>
-                    {kid.avatar}
-                  </span>
-                  <div style={{ display: "flex", justifyContent: "center" }}>
+                  <img src={kid.avatar.src} width="150" height="150" />
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      marginTop: "3%",
+                    }}
+                  >
                     <span
                       style={{
                         color: "#000",
