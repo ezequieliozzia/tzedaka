@@ -16,13 +16,19 @@ const Godchild = (props) => {
           <p className="dark:text-gray-400">
             Sed non nibh iaculis, posuere diam vitae, consectetur neque. Integer
             velit ligula, semper sed nisl in, cursus commodo elit. Pellentesque
+            sit amet mi luctus ligula euismod lobortis ultricies et nibh. Sed
+            non nibh iaculis, posuere diam vitae, consectetur neque. Integer
+            velit ligula, semper sed nisl in, cursus commodo elit. Pellentesque
+            sit amet mi luctus ligula euismod lobortis ultricies et nibh. Sed
+            non nibh iaculis, posuere diam vitae, consectetur neque. Integer
+            velit ligula, semper sed nisl in, cursus commodo elit. Pellentesque
             sit amet mi luctus ligula euismod lobortis ultricies et nibh.
           </p>
         </div>
       </div>
       <div className="flex justify-center pt-4 space-x-4 align-center">
         <button className="text-indigo-500 py-2 px-4  font-medium mt-4">
-          Show more
+          Ver más
         </button>
       </div>
     </div>

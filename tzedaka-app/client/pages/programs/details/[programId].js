@@ -1,12 +1,11 @@
 import { useRouter } from "next/router";
 import programs from "../../../public/mocks/programs.json";
-import { kids } from "../../../public/mocks/kids";
+import kids from "../../../public/mocks/kids";
 import { useState, useEffect } from "react";
 
 const Post = () => {
   const router = useRouter();
   const [programId, setProgramId] = useState(-1);
-  // const { programId } = router.query;
 
   const chunk = (arr, size) =>
     Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
@@ -15,12 +14,14 @@ const Post = () => {
 
   useEffect(() => {
     if (router.isReady) {
-      setProgramId(router.query);
+      setProgramId(router.query.programId);
     }
   }, [router]);
 
+  const shouldRender = router.isReady && programId >= 0;
+
   return (
-    programId >= 0 && (
+    shouldRender && (
       <div>
         <div className="program-container">
           <div className="program-content">
