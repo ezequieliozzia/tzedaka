@@ -1,11 +1,10 @@
 import React from "react";
 import { useUser } from "@clerk/nextjs";
 import bg from "../images/children-playing.jpg";
-import {universe45Light, universe65Bold} from "../utils/fonts";
+import { universe45Light, universe65Bold } from "../utils/fonts";
 
 const Index = () => {
   const { user } = useUser();
-  console.log(user);
   return (
     <div className="flex ">
       <div

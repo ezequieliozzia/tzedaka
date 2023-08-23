@@ -2,12 +2,6 @@ import React from "react";
 import image from "../../images/kid-transformed.png";
 import programs from "../../public/mocks/programs.json";
 
-const programa_1 = {
-  title: "Title programa 1",
-  text: `Aliqua ipsum exercitation enim eu Lorem Lorem sit veniam est cupidatat amet. Pariatur consectetur tempor do sint velit ullamco proident non magna Lorem ex enim. Eu ex deserunt commodo proident esse eu dolor enim aliquip dolor reprehenderit fugiat do
-Occaecat officia ex cillum mollit tempor culpa minim laboris. Veniam velit exercitation deserunt consectetur tempor nisi sunt laborum. Consectetur in veniam laboris officia qui. Tempor cillum dolore nostrud cupidatat cupidatat.`,
-};
-
 const Programs = () => {
   return (
     <>
@@ -32,7 +26,7 @@ const Programs = () => {
         </span>
       </div>
       {programs.map((programa) => {
-        return <Card programa={programa} />;
+        return <Card key={programa.programId} programa={programa} />;
       })}
     </>
   );

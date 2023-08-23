@@ -1,7 +1,7 @@
 import React from "react";
 
 const Godfather = (props) => {
-  const fullName = props.userInfo["fullName"];
+  const fullName = props.mainInfo["fullName"];
   const programs = props.profileInfo["programa"];
   const godchildren = props.profileInfo["ahijados"];
   const donations = props.profileInfo["donaciones"];
