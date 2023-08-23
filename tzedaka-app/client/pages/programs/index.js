@@ -1,12 +1,7 @@
 import React from "react";
 import image from "../../images/kid-transformed.png";
-import programs from "../../public/mocks/programs.json"
-
-const programa_1 = {
-  title: "Title programa 1",
-  text: `Aliqua ipsum exercitation enim eu Lorem Lorem sit veniam est cupidatat amet. Pariatur consectetur tempor do sint velit ullamco proident non magna Lorem ex enim. Eu ex deserunt commodo proident esse eu dolor enim aliquip dolor reprehenderit fugiat do
-Occaecat officia ex cillum mollit tempor culpa minim laboris. Veniam velit exercitation deserunt consectetur tempor nisi sunt laborum. Consectetur in veniam laboris officia qui. Tempor cillum dolore nostrud cupidatat cupidatat.`,
-};
+import programs from "../../public/mocks/programs.json";
+import { universe45Light, universe65Bold } from "../../utils/fonts";
 
 const Programs = () => {
   return (
@@ -19,24 +14,22 @@ const Programs = () => {
         }}
       >
         <span
-          style={{
-            color: "#000",
-            fontFamily: "Abhaya Libre ExtraBold",
-            fontSize: "30px",
-            fontStyle: "normal",
-            fontWeight: "800",
-            lineHeight: "22px",
-          }}
+          className={`text-2xl font-semibold ${universe45Light}`}
+          // style={{
+          //   color: "#000",
+          //   fontFamily: "Abhaya Libre ExtraBold",
+          //   fontSize: "30px",
+          //   fontStyle: "normal",
+          //   fontWeight: "800",
+          //   lineHeight: "22px",
+          // }}
         >
           Apadrinar un chico transforma una vida!
         </span>
       </div>
-      {
-        programs.map((programa) => {
-            return <Card programa={programa} />
-        }
-        )
-    }
+      {programs.map((programa) => {
+        return <Card key={programa.programId} programa={programa} />;
+      })}
     </>
   );
 };
@@ -59,20 +52,25 @@ const Card = ({ programa }) => {
       }}
     >
       <span
-        style={{
-          color: "#000",
-          fontFamily: "Abhaya Libre ExtraBold",
-          fontSize: "30px",
-          fontStyle: "normal",
-          fontWeight: "800",
-          lineHeight: "22px",
-        }}
+        className={`text-2xl font-bold ${universe45Light}`}
+        // style={{
+        //   color: "#000",
+        //   fontFamily: "Abhaya Libre ExtraBold",
+        //   fontSize: "30px",
+        //   fontStyle: "normal",
+        //   fontWeight: "800",
+        //   lineHeight: "22px",
+        // }}
       >
         {programa.programName}
       </span>
       <img style={{ width: "50%" }} src={image.src} alt="IMAGEN" />
-      <p style={{ margin: "0 20%"}}>{programa.programDescription}</p>
-      <a className="hiperlink" href={`/programs/details/${programa.programId}`} >Conoce más</a>
+      <p className={universe45Light} style={{ margin: "0 20%" }}>
+        {programa.programDescription}
+      </p>
+      <a className="hiperlink" href={`/programs/details/${programa.programId}`}>
+        Conoce más
+      </a>
     </div>
   );
 };
