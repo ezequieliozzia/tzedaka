@@ -9,7 +9,12 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      scale: {
+        "60": "0.6",
+        "80": "0.8",
+      },
+    },
     fontFamily: {
       MyFont: ["raleway", "Helvetica", "Arial", "sans-serif"],
     },

@@ -1,16 +1,12 @@
+import ProgramsGrid from "../../../components/programs/ProgramsGrid";
 import { useRouter } from "next/router";
-import programs from "../../../public/mocks/programs.json";
+import { useEffect, useState } from "react";
+import programs from "../../../public/mocks/programs.js";
 import kids from "../../../public/mocks/kids";
-import { useState, useEffect } from "react";
 
 const Post = () => {
   const router = useRouter();
   const [programId, setProgramId] = useState(-1);
-
-  const chunk = (arr, size) =>
-    Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
-      arr.slice(i * size, i * size + size)
-    );
 
   useEffect(() => {
     if (router.isReady) {
@@ -19,7 +15,6 @@ const Post = () => {
   }, [router]);
 
   const shouldRender = router.isReady && programId >= 0;
-
   return (
     shouldRender && (
       <div>
@@ -113,94 +108,7 @@ const Post = () => {
               Conoce a los chicos y sus historias!
             </span>
           </div>
-          <div style={{ display: "flex", flexWrap: "wrap", margin: "4% 4%" }}>
-            {chunk(kids, 3).map((row, rowIndex) => (
-              <div
-                key={`row-${rowIndex}`}
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  width: "100%",
-                }}
-              >
-                {row.map((kid) => (
-                  <div
-                    key={kid.id}
-                    style={{
-                      background: "#FFF",
-                      padding: "2%",
-                      marginTop: "2%",
-                      flex: "0 0 calc(33.3333% - 1% - 1%)",
-                      display: "flex",
-                      justifyContent: "space-between",
-                      flexDirection: "column",
-                      alignItems: "center",
-                    }}
-                  >
-                    <img src={kid.avatar.src} width="150" height="150" />
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        marginTop: "3%",
-                      }}
-                    >
-                      <span
-                        style={{
-                          color: "#000",
-                          fontFamily: "Abhaya Libre ExtraBold",
-                          fontSize: "20px",
-                          fontStyle: "normal",
-                          fontWeight: "800",
-                          lineHeight: "22px",
-                        }}
-                      >
-                        {kid.name}
-                      </span>
-                      <span
-                        style={{
-                          color: "#000",
-                          fontFamily: "Abhaya Libre Medium",
-                          fontSize: "20px",
-                          fontStyle: "normal",
-                          fontWeight: "500",
-                          lineHeight: "22px",
-                        }}
-                      >
-                        | {kid.title}
-                      </span>
-                    </div>
-                    <span
-                      style={{
-                        color: "#000",
-                        fontFamily: "Abhaya Libre Medium",
-                        fontSize: "20px",
-                        fontStyle: "normal",
-                        fontWeight: "500",
-                        lineHeight: "22px",
-                        marginBottom: "6%",
-                        marginTop: "2%",
-                      }}
-                    >
-                      {programs[programId].programName}
-                    </span>
-                    <span
-                      style={{
-                        color: "#000",
-                        fontFamily: "Abhaya Libre Medium",
-                        fontSize: "15px",
-                        fontStyle: "normal",
-                        fontWeight: "500",
-                        lineHeight: "20px",
-                      }}
-                    >
-                      {kid.description}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
+          <ProgramsGrid programs={programs} kids={kids} programId={programId} />
           <div>
             <a
               href="/apadrinar"
