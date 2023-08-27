@@ -16,9 +16,7 @@ const Index = () => {
         }}
       >
         <div className="flex flex-col items-center justify-center w-1/4 h-1/3 bg-transparent mr-20 rounded-md">
-          <p
-            className={`mt-4 text-4xl font-bold text-white ${universe65Bold.className}`}
-          >
+          <p className={`mt-4 text-4xl font-bold text-white ${universe65Bold.className}`}>
             ¡BIENVENIDO!
           </p>
           <p className={`m-6 text-xl text-white ${universe45Light.className}`}>

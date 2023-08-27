@@ -5,6 +5,7 @@ import { Button } from "antd";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import { latoBold700 } from "../utils/fonts";
 import NavbarButton from "./NavbarButton";
+import tzedakaLogo from "../images/logo-tzedaka.png";
 
 const Navbar = () => {
   const { push } = useRouter();
@@ -16,10 +17,8 @@ const Navbar = () => {
     <nav className="flex items-center justify-evenly flex-wrap bg-transparent p-6">
       <div>
         <img
-          src={
-            "https://tzedaka.org.ar/wp-content/uploads/2017/12/logo-tzedaka.png"
-          }
-          style={{ height: "40px" }}
+          src={tzedakaLogo.src}
+          style={{ height: "45px" }}
           alt={""}
           loading={"lazy"}
         />
