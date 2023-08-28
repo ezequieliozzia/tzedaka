@@ -11,8 +11,11 @@ module.exports = {
   theme: {
     extend: {
       scale: {
-        "60": "0.6",
-        "80": "0.8",
+        60: "0.6",
+        80: "0.8",
+      },
+      colors: {
+        "pink-card": "#f0e8f3",
       },
     },
     fontFamily: {
