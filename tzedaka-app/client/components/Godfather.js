@@ -23,7 +23,7 @@ const Godfather = (props) => {
               <p className="text-gray-400">Donaciones</p>
             </div>
             <div>
-              <p className="font-bold text-gray-700 text-xl">...</p>
+              <p className="font-bold text-gray-700 text-xl">2018</p>
               <p className="text-gray-400">Miembro Desde</p>
             </div>
           </div>
