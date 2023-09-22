@@ -30,24 +30,13 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 def home():
     return "Home"
 
-@app.route("/getUser", methods=['GET'])
-@cross_origin()
-def getUser():
-    return accountEntities
-
-@app.route("/<int:ActiveUser>", methods=['POST'])
-@cross_origin()
-def setUser(ActiveUser):
-    activeUser = ActiveUser
-    return jsonify({"ActiveUser": activeUser})
-
 @app.route("/contactInfo", methods=['POST', 'GET'])
 @cross_origin()
 def contactInfo():
     if request.method == 'POST':
         email = request.json['email']
         error = None
-        data = {}
+        data = []
 
         if not email:
             error = 'Email is required.'
@@ -56,27 +45,26 @@ def contactInfo():
             try:
                 query = sf.query("SELECT Padrino__r.Name, Padrino__r.Email, Padrino__r.npo02__MembershipJoinDate__c ,Donaci_n__r.npe03__Amount__c, Ahijado__r.Name, Ahijado__r.Programa__c, Ahijado__r.ltima_entrevista__c FROM Padrinazgo__c WHERE Padrino__r.Email = '" + email + "'")
                 
-                ahijados = []
-                donaciones = []
-                programa = []
-                entrevista = []
-
-                for entry in range(0,query['totalSize']):
-                    ahijados.append( query['records'][entry]['Ahijado__r']['Name'] )
-                    donaciones.append( query['records'][entry]['Donaci_n__r']['npe03__Amount__c'] )
-                    programa.append( query['records'][entry]['Ahijado__r']['Programa__c'] )
-                    entrevista.append( query['records'][entry]['Ahijado__r']['ltima_entrevista__c'] )
-
-                contactInfo = {
+                dataDict = {
                     'contacto': query['records'][0]['Padrino__r']['Name'], 
                     'fechaMembresia': query['records'][0]['Padrino__r']['npo02__MembershipJoinDate__c'],
-                    'donaciones': donaciones,
-                    'ahijados': ahijados,
-                    'programa': programa,
-                    'entrevista': entrevista
-                    }
+                }
+
+                dataList = []
                 
-                data = {**contactInfo}
+                for entry in range(0,query['totalSize']):
+                    ahijadosDict = {
+                        'ahijado':   query['records'][entry]['Ahijado__r']['Name'],
+                        'donacion': query['records'][entry]['Donaci_n__r']['npe03__Amount__c'],
+                        'programa':   query['records'][entry]['Ahijado__r']['Programa__c'],
+                        'entrevista': query['records'][entry]['Ahijado__r']['ltima_entrevista__c']
+                    }
+                    
+                    dataList.append(ahijadosDict)
+                    
+                dataDict["ahijados"] = dataList
+                data.append(dataDict)
+                
             except:
                 data = {}
 
