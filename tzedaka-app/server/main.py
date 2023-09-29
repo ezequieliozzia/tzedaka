@@ -3,18 +3,18 @@ from flask_cors import CORS, cross_origin
 import json
 from pprint import pprint
 from simple_salesforce import Salesforce, format_soql
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # WINDOWS: python -m flask --app main run --debug
 # MAC: flask run
 
-with open("login.json", "r") as login_file:
-    creds = json.load(login_file)
-
-sf = Salesforce( username        = creds['login']['username'],
-                 password        = creds['login']['password'],
-                 instance        = creds['login']['instance'],
-                 consumer_key    = creds['login']['consumer_key'],
-                 consumer_secret = creds['login']['consumer_secret'] )
+sf = Salesforce( username        = os.getenv('FFG_USERNAME'),
+                 password        = os.getenv('FFG_PASSWORD'),
+                 instance        = os.getenv('FFG_INSTANCE'),
+                 consumer_key    = os.getenv('FFG_CONSUMER_KEY'),
+                 consumer_secret = os.getenv('FFG_CONSUMER_SECRET'))
 
 queryAhijados = sf.query("SELECT Name, Edad__c, Programa__c, PAG_Descripci_n__c, C_digo_del_beneficiario__c FROM Beneficiario__c")
 queryPadrinazgos = sf.query("SELECT Ahijado__c FROM Padrinazgo__c")
