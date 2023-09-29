@@ -1,10 +1,10 @@
+import os
+
+from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
-import json
-from pprint import pprint
 from simple_salesforce import Salesforce, format_soql
-import os
-from dotenv import load_dotenv
+
 load_dotenv()
 
 # WINDOWS: python -m flask --app main run --debug
