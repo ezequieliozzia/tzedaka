@@ -2,9 +2,10 @@ import React from "react";
 
 const Godfather = (props) => {
   const fullName = props.mainInfo["fullName"];
-  const programs = props.profileInfo["programa"];
+  const programs = props.profileInfo["programas"];
   const godchildren = props.profileInfo["ahijados"];
-  const donations = props.profileInfo["donaciones"];
+  const memberShipDate = props.profileInfo["fechaMembresia"];
+  const gifted = props.profileInfo["donado"];
   return (
     <div className="p-16">
       <div className="p-8 bg-white shadow">
@@ -17,10 +18,8 @@ const Godfather = (props) => {
               <p className="text-gray-400">Ahijados</p>
             </div>
             <div>
-              <p className="font-bold text-gray-700 text-xl">
-                {donations && donations.length}
-              </p>
-              <p className="text-gray-400">Donaciones</p>
+              <p className="font-bold text-gray-700 text-xl">{gifted}</p>
+              <p className="text-gray-400">Donado</p>
             </div>
             <div>
               <p className="font-bold text-gray-700 text-xl">2018</p>

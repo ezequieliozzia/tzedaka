@@ -47,8 +47,17 @@ def contactInfo():
                 
                 dataDict = {
                     'contacto': query['records'][0]['Padrino__r']['Name'], 
-                    'fechaMembresia': query['records'][0]['Padrino__r']['npo02__MembershipJoinDate__c'],
+                    # fechaMembresia no anda
+                    'fechaMembresia': query['records'][0]['Padrino__r']['npo02__MembershipJoinDate__c']
                 }
+
+
+                donaciones = []
+                programas = []
+
+                for entry in range(0,query['totalSize']):
+                    donaciones.append( query['records'][entry]['Donaci_n__r']['npe03__Amount__c'] )
+                    programas.append( query['records'][entry]['Ahijado__r']['Programa__c'] )
 
                 dataList = []
                 
@@ -61,9 +70,12 @@ def contactInfo():
                     }
                     
                     dataList.append(ahijadosDict)
-                    
+
+                dataDict["programas"] = list(set(programas))    
+                # Numero total de donaciones
+                dataDict["donado"] = sum(donaciones)
                 dataDict["ahijados"] = dataList
-                data.append(dataDict)
+                data = dataDict
                 
             except:
                 data = {}
@@ -103,6 +115,14 @@ def beneficiaries():
             ahijados[x]["Nombre"] not in padrinazgos and noApadrinados.append(ahijados[x])
 
         return jsonify({"ahijados": noApadrinados})
+    
+
+
+# Queries a implementar: 
+
+# dado un intervalo de tiempo 1 mes, 3 meses, 6 meses, 1 año 2, 3 etc.
+# retornar las donaciones que ocurrieron, junto con su timestamp 
+
 
 
 # Queries de prueba

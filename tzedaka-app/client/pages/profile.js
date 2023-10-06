@@ -18,14 +18,23 @@ const Profile = () => {
     loadData();
   }, []);
 
+  const grid_cols = 2;
+  // const grid_cols =
+  //   userInfo["childrenInfo"]["ahijados"].length <= 3
+  //     ? userInfo["childrenInfo"]["ahijados"].length
+  //     : 3;
+  console.log("userInfo", userInfo);
+
   return (
     <>
-      {user && userInfo && (
+      {user && userInfo !== null && (
         <>
           <Godfather mainInfo={user} profileInfo={userInfo["childrenInfo"]} />
-          {userInfo["childrenInfo"]["ahijados"].map((x) => {
-            return <Godchild key={x} name={x} />;
-          })}
+          <div className={`grid grid-cols-${grid_cols}`}>
+            {userInfo.childrenInfo.ahijados.map((x) => {
+              return <Godchild key={x.ahijado} name={x.ahijado} />;
+            })}
+          </div>
         </>
       )}
     </>
