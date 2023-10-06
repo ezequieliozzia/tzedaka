@@ -1,9 +1,6 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import { UserButton, SignedIn, SignedOut } from "@clerk/nextjs";
-import { Button } from "antd";
-import { ArrowRightOutlined } from "@ant-design/icons";
-import { latoBold700 } from "../utils/fonts";
 import NavbarButton from "./NavbarButton";
 import tzedakaLogo from "../images/logo-tzedaka.png";
 
