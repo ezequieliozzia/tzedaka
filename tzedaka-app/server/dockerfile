@@ -1,9 +1,10 @@
-FROM python:3.8-alpine
+FROM python:3.8-slim
 
 WORKDIR /tzedaka/tzedaka-app/server
 
 # Copia el archivo requirements.txt y luego instala las dependencias
-COPY requirements.txt requirements.txt
+COPY requirements.txt .
+
 RUN pip install -r requirements.txt
 
 # Copia el resto de los archivos de la aplicación al contenedor
@@ -15,9 +16,7 @@ RUN chown -R nobody:nogroup /tzedaka/tzedaka-app/server
 # Cambia al usuario no root
 USER nobody
 
-# Copia el script de inicio y configura permisos de ejecución
-COPY entrypoint.sh entrypoint.sh
 RUN chmod +x entrypoint.sh
 
 # Define el comando para ejecutar la aplicación a través del script de inicio
-CMD ["./start_app.sh"]
+CMD ["./entrypoint.sh"]
