@@ -1,39 +1,37 @@
 import React from "react";
-import { Box, Container, Typography } from "@mui/material";
-import Grid from "@mui/material/Grid";
-import IconButton from "@mui/material/IconButton";
-import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
+import { useRouter } from "next/navigation";
 
 const ErrorPage = ({ title, text }) => {
+  const { push } = useRouter();
+
+  const handleHomeRedirection = () => {
+    push("/");
+  };
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        minHeight: "100vh",
-      }}
-    >
-      <Container
-        maxWidth="md"
-        style={{ padding: "15%", backgroundColor: "#fbfbfb" }}
-      >
-        <Grid container spacing={10}>
-          <Grid xs={6}>
-            <Typography variant="h2">{title}</Typography>
-            <Typography variant="h5">{text}</Typography>
-          </Grid>
-          <Grid xs={6}>
-            <IconButton color="primary" aria-label="big-sad-face">
-              <SentimentVeryDissatisfiedIcon
-                fontSize="100%"
-                style={{ width: "5em", height: "5em" }}
-              />
-            </IconButton>
-          </Grid>
-        </Grid>
-      </Container>
-    </Box>
+    <div class="lg:px-24 lg:py-24 md:py-20 md:px-44 px-4 py-24 items-center flex justify-center flex-col-reverse lg:flex-row md:gap-28 gap-16">
+      <div class="xl:pt-24 w-full xl:w-1/2 relative pb-12 lg:pb-0">
+        <div class="relative">
+          <div class="absolute">
+            <div class="">
+              <h1 class="my-2 text-gray-800 font-bold text-2xl">{title}</h1>
+              <p class="my-2 text-gray-800">{text}</p>
+              <button
+                class="sm:w-full lg:w-auto my-2 border rounded md py-4 px-8 text-center bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-opacity-50"
+                onClick={handleHomeRedirection}
+              >
+                Volver al Menu Principal
+              </button>
+            </div>
+          </div>
+          <div>
+            <img src="https://i.ibb.co/G9DC8S0/404-2.png" />
+          </div>
+        </div>
+      </div>
+      <div>
+        <img src="https://i.ibb.co/ck1SGFJ/Group.png" />
+      </div>
+    </div>
   );
 };
 
