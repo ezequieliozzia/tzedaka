@@ -39,8 +39,8 @@ const Profile = () => {
       {user && userInfo && (
         <>
           <Godfather mainInfo={user} profileInfo={userInfo["childrenInfo"]} />
-          {userInfo.childrenInfo?.ahijados?.map((x) => {
-            return <Godchild key={x} name={x} />;
+          {userInfo.childrenInfo[0].ahijados.map((x) => {
+            return <Godchild key={x.ahijado} name={x.ahijado} />;
           })}
         </>
       )}
