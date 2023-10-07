@@ -33,6 +33,7 @@ const Profile = () => {
   //     ? userInfo["childrenInfo"]["ahijados"].length
   //     : 3;
   console.log("userInfo", userInfo);
+  console.log("NODE_ENV= ", process.env.NODE_ENV);
 
   if (error)
     return (
