@@ -10,6 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      height: {
+        "84vh": "84vh",
+      },
       scale: {
         60: "0.6",
         80: "0.8",
