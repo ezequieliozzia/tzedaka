@@ -4,11 +4,13 @@ import { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
 import ProfileService from "../services/ProfileService";
 import ErrorPage from "@/components/ErrorPage";
+import Spinner from "@/components/Spinner";
 
 const Profile = () => {
   const { user } = useUser();
   const [userInfo, setUserInfo] = useState(null);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadData = async () => {
@@ -20,6 +22,7 @@ const Profile = () => {
           setError(true);
         }
         setUserInfo({ mainInfo: user, childrenInfo: childrenInfo });
+        setLoading(false);
       } catch (e) {
         setError(true);
       }
@@ -34,6 +37,14 @@ const Profile = () => {
   //     : 3;
   console.log("userInfo", userInfo);
   console.log("NODE_ENV= ", process.env.NODE_ENV);
+
+  if (loading) {
+    return (
+      <div className="content-center d-flex">
+        <Spinner />
+      </div>
+    );
+  }
 
   if (error)
     return (
