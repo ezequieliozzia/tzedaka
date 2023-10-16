@@ -5,18 +5,23 @@ import programs from "../../../public/mocks/programs.js";
 import kids from "../../../public/mocks/kids";
 import ProgramBanner from "../../..//components/programs/ProgramBanner";
 import { universe45Light } from "../../../utils/fonts";
+import Spinner from "@/components/Spinner";
 
 const Post = () => {
   const router = useRouter();
   const [programId, setProgramId] = useState(-1);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (router.isReady) {
       setProgramId(router.query.programId);
+      setLoading(false);
     }
   }, [router]);
 
   const shouldRender = router.isReady && programId >= 0;
+
+  if (loading) return <Spinner />;
   return (
     shouldRender && (
       <div>

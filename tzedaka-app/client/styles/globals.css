@@ -55,3 +55,21 @@
   position: relative;
   opacity: 1;
 }
+
+@layer keyframes {
+  @keyframes grow {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+  }
+}
+
+@layer components {
+  .animate-grow {
+    animation: grow 0.75s linear infinite;
+  }
+}
