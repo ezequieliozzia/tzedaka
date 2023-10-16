@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
 import ProfileService from "../services/ProfileService";
 import ErrorPage from "@/components/ErrorPage";
+import DonationChart from "@/components/DonationChart";
 
 const Profile = () => {
   const { user } = useUser();
@@ -27,14 +28,6 @@ const Profile = () => {
     loadData();
   }, []);
 
-  const grid_cols = 2;
-  // const grid_cols =
-  //   userInfo["childrenInfo"]["ahijados"].length <= 3
-  //     ? userInfo["childrenInfo"]["ahijados"].length
-  //     : 3;
-  console.log("userInfo", userInfo);
-  console.log("NODE_ENV= ", process.env.NODE_ENV);
-
   if (error)
     return (
       <ErrorPage
@@ -46,11 +39,17 @@ const Profile = () => {
     <>
       {user && userInfo !== null && (
         <>
-          <Godfather mainInfo={user} profileInfo={userInfo["childrenInfo"]} />
-          <div className={`grid grid-cols-${grid_cols}`}>
-            {userInfo.childrenInfo.ahijados.map((x) => {
-              return <Godchild key={x.ahijado} name={x.ahijado} />;
-            })}
+          <div className="flex flex-col">
+            <Godfather mainInfo={user} profileInfo={userInfo["childrenInfo"]} />
+            <div className="p-10">
+              {/* fsdfdsoijf */}
+              <DonationChart />
+            </div>
+            <div className="p-10">
+              {userInfo.childrenInfo.ahijados.map((x) => {
+                return <Godchild key={x.ahijado} name={x.ahijado} />;
+              })}
+            </div>
           </div>
         </>
       )}

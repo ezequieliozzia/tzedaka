@@ -13,10 +13,14 @@
     "@clerk/localizations": "^1.16.0",
     "@clerk/nextjs": "^4.19.0",
     "antd": "^5.5.2",
+    "apexcharts": "^3.43.0",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.3",
+    "flowbite": "^1.8.1",
+    "flowbite-react": "^0.6.4",
     "next": "13.4.3",
     "react": "18.2.0",
+    "react-apexcharts": "^1.4.1",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
