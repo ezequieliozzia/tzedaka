@@ -6,6 +6,7 @@ import ProfileService from "../services/ProfileService";
 import ErrorPage from "@/components/ErrorPage";
 import DonationChart from "@/components/DonationChart";
 import Spinner from "@/components/Spinner";
+import KidsTable from "@/components/profile/KidsTable";
 
 const Profile = () => {
   const { user } = useUser();
@@ -50,16 +51,10 @@ const Profile = () => {
     <>
       {user && userInfo !== null && (
         <>
-          <div className="flex flex-col">
+          <div className="flex flex-col p-10">
             <Godfather mainInfo={user} profileInfo={userInfo["childrenInfo"]} />
-            <div className="p-10">
-              <DonationChart />
-            </div>
-            <div className="p-10">
-              {userInfo.childrenInfo.ahijados.map((x) => {
-                return <Godchild key={x.ahijado} name={x.ahijado} />;
-              })}
-            </div>
+            <DonationChart />
+            <KidsTable info={userInfo.childrenInfo.ahijados} />
           </div>
         </>
       )}
