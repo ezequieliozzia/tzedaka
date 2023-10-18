@@ -116,7 +116,33 @@ def beneficiaries():
 
         return jsonify({"ahijados": noApadrinados})
     
+@app.route("/eventos", methods=['GET'])
+@cross_origin()
+def eventos():
+    eventos = []
 
+    queryEventos = sf.query("SELECT OwnerId, Name, LastModifiedById, Im_gen__c, Fecha__c, Descripci_n__c, CreatedById FROM PAG_eventos__c")
+
+    for entry in range(0, queryEventos['totalSize']):
+            
+        data = { "OwnerId": queryEventos['records'][entry]['OwnerId'],
+                    "Name": queryEventos['records'][entry]['Name'],
+                    "LastModifiedById": queryEventos['records'][entry]['LastModifiedById'],
+                    "Imagen": queryEventos['records'][entry]['Im_gen__c'],
+                    "Fecha": queryEventos['records'][entry]['Fecha__c'],
+                    "Descripcion": queryEventos['records'][entry]['Descripci_n__c'],
+                    "CreatedById": queryEventos['records'][entry]['CreatedById'],
+        }
+
+        eventos.append(data)
+
+
+    return jsonify({"eventos": eventos})
+
+
+
+
+    
 
 # Queries a implementar: 
 
