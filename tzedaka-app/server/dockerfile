@@ -18,5 +18,6 @@ USER nobody
 
 RUN chmod +x entrypoint.sh
 
+
 # Define el comando para ejecutar la aplicación a través del script de inicio
-CMD ["./entrypoint.sh"]
+CMD ["bash", "entrypoint.sh"]
