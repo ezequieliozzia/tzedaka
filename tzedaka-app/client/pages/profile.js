@@ -4,7 +4,9 @@ import { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
 import ProfileService from "../services/ProfileService";
 import ErrorPage from "@/components/ErrorPage";
+import DonationChart from "@/components/DonationChart";
 import Spinner from "@/components/Spinner";
+import KidsTable from "@/components/profile/KidsTable";
 
 const Profile = () => {
   const { user } = useUser();
@@ -30,14 +32,6 @@ const Profile = () => {
     loadData();
   }, []);
 
-  const grid_cols = 2;
-  // const grid_cols =
-  //   userInfo["childrenInfo"]["ahijados"].length <= 3
-  //     ? userInfo["childrenInfo"]["ahijados"].length
-  //     : 3;
-  console.log("userInfo", userInfo);
-  console.log("NODE_ENV= ", process.env.NODE_ENV);
-
   if (loading) {
     return (
       <div className="content-center d-flex">
@@ -57,11 +51,10 @@ const Profile = () => {
     <>
       {user && userInfo !== null && (
         <>
-          <Godfather mainInfo={user} profileInfo={userInfo["childrenInfo"]} />
-          <div className={`grid grid-cols-${grid_cols}`}>
-            {userInfo.childrenInfo.ahijados.map((x) => {
-              return <Godchild key={x.ahijado} name={x.ahijado} />;
-            })}
+          <div className="flex flex-col p-10">
+            <Godfather mainInfo={user} profileInfo={userInfo["childrenInfo"]} />
+            <DonationChart />
+            <KidsTable info={userInfo.childrenInfo.ahijados} />
           </div>
         </>
       )}
