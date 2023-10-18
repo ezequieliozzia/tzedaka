@@ -116,7 +116,7 @@ def beneficiaries():
 
         return jsonify({"ahijados": noApadrinados})
     
-@app.route("/eventos", methods=['GET'])
+@app.route("/events", methods=['GET'])
 @cross_origin()
 def eventos():
     eventos = []
