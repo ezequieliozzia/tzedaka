@@ -26,31 +26,50 @@ const FormComponent = () => {
             Información de contacto
           </h2>
           {/* The following div manages all fields */}
-          <div className="w-3/4">
-            <FreeTextField type="text" id="name" label="Nombre" required />
-            <FreeTextField type="text" id="surname" label="Apellido" required />
-            <FreeTextField type="text" id="email" label="Email" required />
-            <FreeTextField
-              type="tel"
-              id="phone"
-              label="Número de teléfono"
-              pattern="[0-9]{10,12}"
-              required
-            />
+          <div>
+            {/* <div className="flex items-center justify-center"> */}
+            <div className="grid grid-cols-2 gap-3 mt-10">
+              <FreeTextField type="text" id="name" label="Nombre" required />
+              <FreeTextField
+                type="text"
+                id="surname"
+                label="Apellido"
+                required
+              />
+              <FreeTextField type="text" id="email" label="Email" required />
+              <FreeTextField
+                type="tel"
+                id="phone"
+                label="Número de teléfono"
+                pattern="[0-9]{10,12}"
+                required
+              />
+            </div>
+
             <DropdownField
               type="text"
               id="country"
               label="País"
               options={countries}
+              selected="Argentina"
             />
-            <FreeTextField type="text" id="address" label="Dirección" />
-            <FreeTextField type="text" id="city" label="Localidad" />
-            <FreeTextField type="text" id="state" label="Provincia" />
-            <FreeTextField type="text" id="zipcode" label="Código Postal" />
+            <div className="grid grid-cols-2 gap-3">
+              <FreeTextField type="text" id="state" label="Provincia" />
+              <FreeTextField type="text" id="city" label="Localidad" />
+
+              <FreeTextField type="text" id="address" label="Dirección" />
+
+              <FreeTextField type="text" id="zipcode" label="Código Postal" />
+            </div>
           </div>
         </div>
         <div className="flex items-center justify-center">
-          <button type="submit">Submit</button>
+          <button
+            className="bg-purple-800 text-white font-bold rounded py-2 px-4"
+            type="submit"
+          >
+            Enviar
+          </button>
         </div>
       </form>
     </div>
