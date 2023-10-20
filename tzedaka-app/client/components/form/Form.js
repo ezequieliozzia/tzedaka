@@ -1,183 +1,56 @@
 import React from "react";
 import countries from "./Countries";
+import FreeTextField from "./FreeTextField";
+import DropdownField from "./DropdownField";
 
 const FormComponent = () => {
+  async function onSubmit(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const response = await fetch("/api/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    // Handle response if necessary
+    // const data = await response.json();
+    // ...
+  }
+
   return (
     <div>
-      <form>
+      <form onSubmit={onSubmit}>
         <div className="border-b border-gray-900/10 pb-12">
           <h2 className="text-base font-semibold leading-7 text-gray-900">
             Información de contacto
           </h2>
-          {/* <p className="mt-1 text-sm leading-6 text-gray-600">
-            Use a permanent address where you can receive mail.
-          </p> */}
-
-          <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-            <div className="sm:col-span-3">
-              <label
-                for="first-name"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Nombre
-              </label>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="first-name"
-                  id="first-name"
-                  autocomplete="given-name"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-
-            <div className="sm:col-span-3">
-              <label
-                for="last-name"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Apellido
-              </label>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="last-name"
-                  id="last-name"
-                  autocomplete="family-name"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-
-            <div className="sm:col-span-4">
-              <label
-                for="email"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Email
-              </label>
-              <div className="mt-2">
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autocomplete="email"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label
-                for="phone"
-                class="block mb-2 text-sm font-medium text-black"
-              >
-                Número de teléfono
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="123-45-678"
-                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                required
-              />
-            </div>
-
-            <div className="sm:col-span-3">
-              <label
-                for="country"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                País
-              </label>
-              <div className="mt-2">
-                <select
-                  id="country"
-                  name="country"
-                  autocomplete="country-name"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                >
-                  {countries.map((country) => (
-                    <option>{country}</option>
-                  ))}
-                </select>
-              </div>
-            </div>
-
-            <div className="col-span-full">
-              <label
-                for="street-address"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Dirección
-              </label>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="street-address"
-                  id="street-address"
-                  autocomplete="street-address"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-
-            <div className="sm:col-span-2 sm:col-start-1">
-              <label
-                for="city"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Localidad
-              </label>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="city"
-                  id="city"
-                  autocomplete="address-level2"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-
-            <div className="sm:col-span-2">
-              <label
-                for="region"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Provincia
-              </label>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="region"
-                  id="region"
-                  autocomplete="address-level1"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-
-            <div className="sm:col-span-2">
-              <label
-                for="postal-code"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Código Postal
-              </label>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="postal-code"
-                  id="postal-code"
-                  autocomplete="postal-code"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
+          {/* The following div manages all fields */}
+          <div className="w-3/4">
+            <FreeTextField type="text" id="name" label="Nombre" required />
+            <FreeTextField type="text" id="surname" label="Apellido" required />
+            <FreeTextField type="text" id="email" label="Email" required />
+            <FreeTextField
+              type="tel"
+              id="phone"
+              label="Número de teléfono"
+              pattern="[0-9]{10,12}"
+              required
+            />
+            <DropdownField
+              type="text"
+              id="country"
+              label="País"
+              options={countries}
+            />
+            <FreeTextField type="text" id="address" label="Dirección" />
+            <FreeTextField type="text" id="city" label="Localidad" />
+            <FreeTextField type="text" id="state" label="Provincia" />
+            <FreeTextField type="text" id="zipcode" label="Código Postal" />
           </div>
+        </div>
+        <div className="flex items-center justify-center">
+          <button type="submit">Submit</button>
         </div>
       </form>
     </div>
