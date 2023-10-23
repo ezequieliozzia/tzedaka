@@ -6,7 +6,7 @@ def index():
     }
 
 def contactInfoController():
-
+   print("entre a contact info controller")
    return contactInfo()
 
 def beneficiariesController():

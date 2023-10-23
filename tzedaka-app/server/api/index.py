@@ -6,8 +6,8 @@ activeUser = 0
 
 app = Flask(__name__)
 
-# CORS(app, resources={r"/api/*": {"origins":"https://tzedaka-neon.vercel.app" }})
-# app.config['CORS_HEADERS'] = 'Content-Type'
+CORS(app, resources={r"/*": {"origins": "https://tzedaka-neon.vercel.app"}})
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 app.register_blueprint(blueprint, url_prefix='/')
 
