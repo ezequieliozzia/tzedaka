@@ -16,7 +16,7 @@ const nextConfig = {
         destination:
           process.env.NODE_ENV === "production"
             ? "https://tzedaka-backend.vercel.app/:path*"
-            : "http://127.0.0.1:5000/:path*", // Proxy to Backend
+            : "http://127.0.0.1:5000/api/:path*", // Proxy to Backend
       },
     ];
   },
