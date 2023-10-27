@@ -1,4 +1,3 @@
-import Godchild from "@/components/profile/Godchild";
 import Godfather from "@/components/profile/Godfather";
 import { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
