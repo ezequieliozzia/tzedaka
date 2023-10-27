@@ -1,10 +1,10 @@
-import Godchild from "@/components/Godchild";
-import Godfather from "@/components/Godfather";
+import Godchild from "@/components/profile/Godchild";
+import Godfather from "@/components/profile/Godfather";
 import { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
 import ProfileService from "../services/ProfileService";
 import ErrorPage from "@/components/ErrorPage";
-import DonationChart from "@/components/DonationChart";
+import DonationChart from "@/components/profile/DonationChart";
 import Spinner from "@/components/Spinner";
 import KidsTable from "@/components/profile/KidsTable";
 

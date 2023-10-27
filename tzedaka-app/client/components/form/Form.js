@@ -36,7 +36,7 @@ const FormComponent = () => {
                 label="Apellido"
                 required
               />
-              <FreeTextField type="text" id="email" label="Email" required />
+              <FreeTextField type="email" id="email" label="Email" required />
               <FreeTextField
                 type="tel"
                 id="phone"
