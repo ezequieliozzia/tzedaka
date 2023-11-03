@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
-import { RxDotFilled } from "react-icons/rx";
+import { RxDot, RxDotFilled } from "react-icons/rx";
 
 const Carousel = () => {
   const slides = [
     {
-      url: "https://fundacintzedak.file.force.com/sfc/dist/version/renditionDownload?rendition=ORIGINAL_Jpg&versionId=0686S00000ehKbA&operationContext=DELIVERY&contentId=05T6S000025BkRX&page=0&d=/a/6S0000029Zs9/wKqTrzazXjkLWbN_7K69Engd._l32bMeE7qL06aMOIc&oid=00D6S0000003nW4&dpt=null&viewId=",
+      url: "https://images.squarespace-cdn.com/content/v1/5b7c56e255b02c683659fe43/1538160281092-VL9JSJTT5W011B8SCSEL/children-raise.png?format=1500w",
+      description:
+        "ABC garantiza acceso digno a educación a niños en etapa inicial y primaria, acompáñanos",
+      name: "Inauguración programa ABC",
     },
     {
-      url: "https://fundacintzedak.file.force.com/sfc/dist/version/renditionDownload?rendition=ORIGINAL_Jpg&versionId=0686S00000ehKb5&operationContext=DELIVERY&contentId=05T6S000025BkRS&page=0&d=/a/6S0000029ZsE/OiNQnob0ntCI8Uv1QLnGiyYsNLA9PneUDcWwcJPYnFc&oid=00D6S0000003nW4&dpt=null&viewId=",
+      url: "https://images.healthshots.com/healthshots/en/uploads/2023/04/23115552/children-1-770x436.jpg",
+      description:
+        "IDEA garantiza educación digna a jóvenes y adolescentes de secundaria y bachillerato",
+      name: "Inauguración programa IDEA",
     },
   ];
 
@@ -34,7 +40,7 @@ const Carousel = () => {
 
   return (
     slides.length > 0 && (
-      <div className="max-w-[1200px] h-[600px] w-full m-auto py-16 px-4 relative group">
+      <div className="h-[600px] w-full m-auto py-16 relative group">
         <div
           style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
           className="w-full h-full rounded-2xl bg-center bg-cover duration-500"
@@ -52,9 +58,19 @@ const Carousel = () => {
               onClick={() => goToSlide(slideIndex)}
               className="text-2xl cursor-pointer"
             >
-              <RxDotFilled />
+              {slideIndex === currentIndex ? <RxDotFilled /> : <RxDot />}
             </div>
           ))}
+        </div>
+        <div className="flex font-bold justify-center items-center">
+          <div className="absolute top-[67%] text-2xl bg-black/20 text-white">
+            {slides[currentIndex].name}
+          </div>
+        </div>
+        <div className="flex justify-center items-center">
+          <div className="absolute top-[75%] text-2xl bg-black/20 text-white">
+            {slides[currentIndex].description}
+          </div>
         </div>
       </div>
     )
