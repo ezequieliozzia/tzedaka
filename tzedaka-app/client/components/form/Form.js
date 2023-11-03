@@ -67,7 +67,7 @@ const FormComponent = () => {
             <DropdownField
               type="text"
               id="programs"
-              label="Programa"
+              label="Programa de interés"
               options={programs}
               selected="ABC"
             />
