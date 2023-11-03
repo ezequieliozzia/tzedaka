@@ -1,7 +1,9 @@
 import React from "react";
 import countries from "./Countries";
+import programs from "./Programs";
 import FreeTextField from "./FreeTextField";
 import DropdownField from "./DropdownField";
+import CommentField from "./CommentField";
 
 const FormComponent = () => {
   async function onSubmit(event) {
@@ -61,6 +63,22 @@ const FormComponent = () => {
 
               <FreeTextField type="text" id="zipcode" label="Código Postal" />
             </div>
+
+            <DropdownField
+              type="text"
+              id="programs"
+              label="Programa"
+              options={programs}
+              selected="ABC"
+            />
+
+            <CommentField 
+              id="comment" 
+              label="Comentario" 
+              height="h-40" 
+              maxChars={300} 
+            />
+
           </div>
         </div>
         <div className="flex items-center justify-center">
