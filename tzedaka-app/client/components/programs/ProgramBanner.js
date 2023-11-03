@@ -19,8 +19,13 @@ const ProgramBanner = ({ program }) => {
             <div className="text-white text-xl md:text-2xl my-5">
               {program.programDescription}
             </div>
+            <img
+              src={program.image.src} 
+              className="absolute object-contain right-0 top-1/2 transform -translate-y-1/2 h-48" 
+            />
           </div>
         </div>
+
         <div className="absolute inset-0 flex justify-center items-end my-10">
           <a
             href="#"
