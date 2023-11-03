@@ -1,7 +1,7 @@
 import Godfather from "@/components/profile/Godfather";
 import { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
-import ProfileService from "../services/ProfileService";
+import ProfileService from "../../services/ProfileService";
 import ErrorPage from "@/components/ErrorPage";
 import DonationChart from "@/components/profile/DonationChart";
 import Spinner from "@/components/Spinner";

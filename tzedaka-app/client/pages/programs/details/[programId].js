@@ -21,28 +21,21 @@ const Post = () => {
       setLoading(false);
 
       EventService.getEvents().then((data) => {
-        console.log("data", data);
-        console.log(
-          "new data, ",
-          data.map((x) => {
-            return {
-              url: x.Imagen,
-            };
-          })
-        );
         setEvents(
           data.map((x) => {
             return {
               url: x.Imagen,
+              name: x.Name,
+              description: x.Descripcion,
+              // ...x,
             };
           })
         );
       });
-
-      // console.log("Events: ", EventService.getEvents());
     }
   }, [router]);
 
+  console.log("Events: ", events);
   const shouldRender = router.isReady && programId >= 0;
 
   if (loading) return <Spinner />;
@@ -62,8 +55,8 @@ const Post = () => {
               kids={kids}
               programId={programId}
             />
+            <Carousel slides={events} />
           </div>
-          <Carousel slides={events} />
         </div>
       </div>
     )
