@@ -165,6 +165,29 @@ def story():
                 data = {}
 
         return jsonify(data)
+    
+@app.route("/donations", methods=['POST', 'GET'])
+@cross_origin()
+def donations():
+    if request.method == 'POST':
+        name = request.json['name']
+        error = None
+        data = {}
+
+        if not name:
+            error = 'Name is required.'
+
+        if error is None:
+            try:
+                query = sf.query("SELECT npe03__Amount__c, npe03__Date_Established__c FROM npe03__Recurring_Donation__c WHERE npe03__Contact__r.Name = '" + name + "'")
+
+                for entry in range(0, len(query["records"])):
+                    data[query["records"][entry]["npe03__Date_Established__c"]] = query["records"][entry]["npe03__Amount__c"]
+
+            except:
+                data = {}
+
+        return jsonify(data)
 
 # Queries a implementar: 
 
