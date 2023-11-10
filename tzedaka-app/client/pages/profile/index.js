@@ -52,8 +52,8 @@ const Profile = () => {
         <>
           <div className="flex flex-col p-10">
             <Godfather mainInfo={user} profileInfo={userInfo["childrenInfo"]} />
-            <DonationChart />
             <KidsTable info={userInfo.childrenInfo.ahijados} />
+            <DonationChart />
           </div>
         </>
       )}
