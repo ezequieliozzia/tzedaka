@@ -142,9 +142,29 @@ def eventos():
     return jsonify({"eventos": eventos})
 
 
+@app.route("/story", methods=['POST', 'GET'])
+@cross_origin()
+def story():
+    if request.method == 'POST':
+        name = request.json['name']
+        error = None
+        data = []
 
+        if not name:
+            error = 'Name is required.'
 
-    
+        if error is None:
+            try:
+                query = sf.query("SELECT Historia_V_nculo__c FROM Historia__c WHERE Beneficiario__r.Name = '" + name + "'")
+
+                data = {
+                    "story": query['records'][0]["Historia_V_nculo__c"]
+                }
+
+            except:
+                data = {}
+
+        return jsonify(data)
 
 # Queries a implementar: 
 
