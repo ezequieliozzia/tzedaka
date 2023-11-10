@@ -56,7 +56,7 @@ def contactInfo():
 def beneficiaries():
     
     queryAhijados = sf.query("SELECT Name, Edad__c, Programa__c, PAG_Descripci_n__c FROM Beneficiario__c")
-    queryPadrinazgos = sf.query("SELECT Ahijado__r.Name FROM Padrinazgo__c")
+    queryPadrinazgos = sf.query("SELECT Ahijado__r.Name, Cobertura_padrinazgo__c FROM Padrinazgo__c GROUP BY Ahijado__r.Name")
 
     ahijados = []
     padrinazgos = []
@@ -65,16 +65,16 @@ def beneficiaries():
     for entry in range(0, queryAhijados['totalSize']):
         
         data = { "Nombre": queryAhijados['records'][entry]['Name'],
-                    "Edad": queryAhijados['records'][entry]['Edad__c'],
-                    "Programa": queryAhijados['records'][entry]['Programa__c'],
-                    "Descripcion": queryAhijados['records'][entry]['PAG_Descripci_n__c']
+                 "Edad": queryAhijados['records'][entry]['Edad__c'],
+                 "Programa": queryAhijados['records'][entry]['Programa__c'],
+                 "Descripcion": queryAhijados['records'][entry]['PAG_Descripci_n__c']
         }
 
         ahijados.append(data)
         
     for entry in range(0, queryPadrinazgos['totalSize']):
         # Si el padrinazgo no tiene ahijado rompe todo
-        if ( queryPadrinazgos['records'][entry]['Ahijado__r'] != None ):
+        if ( queryPadrinazgos['records'][entry]['Ahijado__r'] != None and queryPadrinazgos['records'][entry]['Cobertura_padrinazgo__c'] > 0.95 ):
             padrinazgos.append( queryPadrinazgos['records'][entry]['Ahijado__r']['Name'] )
 
     for x in range(0, len(ahijados)):
