@@ -1,5 +1,8 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link"
+import StyledLinkButton from "../StyledLinkButton";
+
 const ProgramBanner = ({ program }) => {
   return (
     <>
@@ -26,14 +29,14 @@ const ProgramBanner = ({ program }) => {
           </div>
         </div>
 
-        <div className="absolute inset-0 flex justify-center items-end my-10">
-          <a
-            href="#"
-            className="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-l rounded hover:bg-gray-200 hover:text-gray-800"
-          >
-            Apadrinar
-          </a>
-        </div>
+        <StyledLinkButton
+          href="/form"
+          label="Apadrinar"
+          bgColor="bg-purple-800"
+          textColor="text-white"
+          hoverBgColor="bg-blue-200"
+          hoverTextColor="text-white-800"
+        />
       </div>
     </>
   );
