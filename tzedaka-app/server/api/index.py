@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
+import random
 from simple_salesforce import Salesforce, format_soql
 
 load_dotenv()
@@ -91,7 +92,7 @@ def beneficiaries():
     if request.method == 'GET':
         # query = sf.query("SELECT Name, Edad__c, Programa__c, PAG_Descripci_n__c FROM Beneficiario__c WHERE C_digo_del_beneficiario__c NOT IN (SELECT Ahijado__c FROM Padrinazgo__c)")
         queryAhijados = sf.query("SELECT Name, Edad__c, Programa__c, PAG_Descripci_n__c FROM Beneficiario__c")
-        queryPadrinazgos = sf.query("SELECT Ahijado__r.Name FROM Padrinazgo__c")
+        queryPadrinazgos = sf.query("SELECT Ahijado__r.Name, SUM(Cobertura_padrinazgo__c) Cobertura FROM Padrinazgo__c GROUP BY Ahijado__r.Name")
 
         ahijados = []
         padrinazgos = []
@@ -100,22 +101,22 @@ def beneficiaries():
         for entry in range(0, queryAhijados['totalSize']):
             
             data = { "Nombre": queryAhijados['records'][entry]['Name'],
-                     "Edad": queryAhijados['records'][entry]['Edad__c'],
-                     "Programa": queryAhijados['records'][entry]['Programa__c'],
-                     "Descripcion": queryAhijados['records'][entry]['PAG_Descripci_n__c']
+                    "Edad": queryAhijados['records'][entry]['Edad__c'],
+                    "Programa": queryAhijados['records'][entry]['Programa__c'],
+                    "Descripcion": queryAhijados['records'][entry]['PAG_Descripci_n__c']
             }
 
             ahijados.append(data)
             
         for entry in range(0, queryPadrinazgos['totalSize']):
-            # Si el padrinazgo no tiene ahijado rompe todo
-            if ( queryPadrinazgos['records'][entry]['Ahijado__r'] != None ):
-                padrinazgos.append( queryPadrinazgos['records'][entry]['Ahijado__r']['Name'] )
+            # Si el padrinazgo no tiene ahijado rompe todo (porque hay entrada de padrinazgo sin beneficiario???)
+            if ( queryPadrinazgos['records'][entry]['Name'] != None and queryPadrinazgos['records'][entry]['Cobertura'] >= 100 ):
+                padrinazgos.append( queryPadrinazgos['records'][entry]['Name'] )
 
         for x in range(0, len(ahijados)):
             ahijados[x]["Nombre"] not in padrinazgos and noApadrinados.append(ahijados[x])
 
-        return jsonify({"ahijados": noApadrinados})
+        return jsonify({"ahijados": random.sample(noApadrinados, 6)})
     
 @app.route("/events", methods=['GET'])
 @cross_origin()
@@ -141,9 +142,52 @@ def eventos():
     return jsonify({"eventos": eventos})
 
 
+@app.route("/story", methods=['POST', 'GET'])
+@cross_origin()
+def story():
+    if request.method == 'POST':
+        name = request.json['name']
+        error = None
+        data = []
 
+        if not name:
+            error = 'Name is required.'
 
+        if error is None:
+            try:
+                query = sf.query("SELECT Historia_V_nculo__c FROM Historia__c WHERE Beneficiario__r.Name = '" + name + "'")
+
+                data = {
+                    "story": query['records'][0]["Historia_V_nculo__c"]
+                }
+
+            except:
+                data = {}
+
+        return jsonify(data)
     
+@app.route("/donations", methods=['POST', 'GET'])
+@cross_origin()
+def donations():
+    if request.method == 'POST':
+        name = request.json['name']
+        error = None
+        data = {}
+
+        if not name:
+            error = 'Name is required.'
+
+        if error is None:
+            try:
+                query = sf.query("SELECT npe03__Amount__c, npe03__Date_Established__c FROM npe03__Recurring_Donation__c WHERE npe03__Contact__r.Name = '" + name + "'")
+
+                for entry in range(0, len(query["records"])):
+                    data[query["records"][entry]["npe03__Date_Established__c"]] = query["records"][entry]["npe03__Amount__c"]
+
+            except:
+                data = {}
+
+        return jsonify(data)
 
 # Queries a implementar: 
 
