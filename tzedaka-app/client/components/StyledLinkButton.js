@@ -9,7 +9,7 @@ const StyledLinkButton = ({ href, label, bgColor, textColor, hoverBgColor, hover
   };
 
   return (
-    <div className="absolute inset-0 flex justify-center items-end my-10">
+    <div className="flex inset-0 flex justify-center items-end my-10">
       <Link href={href}>
         <div
           className={`py-4 px-8 text-white font-bold uppercase text-l rounded ${bgColor} hover:${isHovered ? hoverBgColor : bgColor}`}

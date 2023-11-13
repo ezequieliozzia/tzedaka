@@ -28,15 +28,16 @@ const ProgramBanner = ({ program }) => {
             />
           </div>
         </div>
-
-        <StyledLinkButton
-          href="/form"
-          label="Apadrinar"
-          bgColor="bg-purple-800"
-          textColor="text-white"
-          hoverBgColor="bg-blue-200"
-          hoverTextColor="text-white-800"
-        />
+        <div className="absolute inset-0 flex justify-center items-end my-10">
+          <StyledLinkButton
+            href="/form"
+            label="Apadrinar"
+            bgColor="bg-purple-800"
+            textColor="text-white"
+            hoverBgColor="bg-blue-200"
+            hoverTextColor="text-white-800"
+            />
+        </div>
       </div>
     </>
   );
