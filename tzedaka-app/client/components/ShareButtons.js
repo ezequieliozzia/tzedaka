@@ -3,28 +3,30 @@ import React from "react";
 const shareText = "¡Convertite en Padrino y ayudanos a cambiar una vida!";
 const buttonStyle = "border-2 duration-200 ease inline-flex items-center mb-1 mr-1 transition p-3 rounded-lg text-white border-purple-600 bg-purple-600 hover:bg-purple-700 hover:border-purple-700"
 
-const FacebookButton = () => {
-	return (
-		<a className={buttonStyle} target="_blank" rel="noopener" href={`https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftzedaka-neon.vercel.app%2F&quote=${encodeURIComponent(shareText)}`} aria-label="Share on Facebook" draggable="false">
-			<svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-6 h-6">
-				<title>Facebook</title>
-				<path d="M379 22v75h-44c-36 0-42 17-42 41v54h84l-12 85h-72v217h-88V277h-72v-85h72v-62c0-72 45-112 109-112 31 0 58 3 65 4z"></path>
-			</svg>
-		</a>
-	);
-};
+// Removed by Tzedaká request - Uncomment if required 
+// const FacebookButton = () => {
+// 	return (
+// 		<a className={buttonStyle} target="_blank" rel="noopener" href={`https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftzedaka-neon.vercel.app%2F&quote=${encodeURIComponent(shareText)}`} aria-label="Share on Facebook" draggable="false">
+// 			<svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-6 h-6">
+// 				<title>Facebook</title>
+// 				<path d="M379 22v75h-44c-36 0-42 17-42 41v54h84l-12 85h-72v217h-88V277h-72v-85h72v-62c0-72 45-112 109-112 31 0 58 3 65 4z"></path>
+// 			</svg>
+// 		</a>
+// 	);
+// };
 
-const TwitterButton = () => {
-	return (
-		<a className={buttonStyle} target="_blank" rel="noopener" href={`https://twitter.com/intent/tweet?url=https%3A%2F%2Ftzedaka-neon.vercel.app%2F&text=${encodeURIComponent(shareText)}`} aria-label="Share on Twitter" draggable="false">
-			<svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-6 h-6">
-				<title>Twitter</title>
-				<path d="m459 152 1 13c0 139-106 299-299 299-59 0-115-17-161-47a217 217 0 0 0 156-44c-47-1-85-31-98-72l19 1c10 0 19-1 28-3-48-10-84-52-84-103v-2c14 8 30 13 47 14A105 105 0 0 1 36 67c51 64 129 106 216 110-2-8-2-16-2-24a105 105 0 0 1 181-72c24-4 47-13 67-25-8 24-25 45-46 58 21-3 41-8 60-17-14 21-32 40-53 55z">
-				</path>
-			</svg>
-		</a>
-	);
-};
+// Removed by Tzedaká request - Uncomment if required
+// const TwitterButton = () => {
+// 	return (
+// 		<a className={buttonStyle} target="_blank" rel="noopener" href={`https://twitter.com/intent/tweet?url=https%3A%2F%2Ftzedaka-neon.vercel.app%2F&text=${encodeURIComponent(shareText)}`} aria-label="Share on Twitter" draggable="false">
+// 			<svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-6 h-6">
+// 				<title>Twitter</title>
+// 				<path d="m459 152 1 13c0 139-106 299-299 299-59 0-115-17-161-47a217 217 0 0 0 156-44c-47-1-85-31-98-72l19 1c10 0 19-1 28-3-48-10-84-52-84-103v-2c14 8 30 13 47 14A105 105 0 0 1 36 67c51 64 129 106 216 110-2-8-2-16-2-24a105 105 0 0 1 181-72c24-4 47-13 67-25-8 24-25 45-46 58 21-3 41-8 60-17-14 21-32 40-53 55z">
+// 				</path>
+// 			</svg>
+// 		</a>
+// 	);
+// };
 
 const LinkedinButton = () => {
 	return (
@@ -65,10 +67,8 @@ const EmailButton = () => {
 const ShareButtons = () => {
 	return (
 		<div className="sharing-buttons flex flex-wrap">
-			<FacebookButton />
-			<TwitterButton />
-			<LinkedinButton />
 			<WhatsappButton />
+			<LinkedinButton />
 			<EmailButton />
 		</div>
 	);
