@@ -4,6 +4,7 @@ import bg from "../images/children-playing.jpg";
 import StyledLinkButton from "@/components/StyledLinkButton";
 import HomeMainText from "@/components/HomeMainText";
 import ShareButtons from "@/components/ShareButtons";
+import BouncingDownArrow from '@/components/BouncingDownArrow';
 
 const Index = () => {
   const [showShareButtons, setShowShareButtons] = useState(false);
@@ -22,16 +23,8 @@ const Index = () => {
           <StyledLinkButton href="/programs" label="Quiero Apadrinar"   bgColor="bg-purple-800" textColor="text-white" hoverBgColor="bg-purple-200" hoverTextColor="text-white-800"/>
           <StyledLinkButton href="/" label="Invitar a otros a sumarse"  bgColor="bg-purple-800" textColor="text-white" hoverBgColor="bg-purple-200" hoverTextColor="text-white-800" onClick={handleInviteClick}/>
         </div>
-        {showShareButtons ? (
-          <div class="flex justify-center">
-            <div class="animate-bounce bg-purple-800 p-2 w-10 h-10 ring-1 ring-slate-900/5 dark:ring-slate-200/20 shadow-lg rounded-full flex items-center justify-center">
-              <svg class="w-6 h-6 text-white" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-              </svg>
-            </div>
-          </div>
-          ) : null   }
-        {showShareButtons &&  <ShareButtons/> }
+        {showShareButtons && <BouncingDownArrow/> }
+        {showShareButtons && <ShareButtons/> }
       </div>
     </div>
   );
