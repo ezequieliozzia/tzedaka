@@ -8,20 +8,12 @@ const Godfather = (props) => {
   const gifted = props.profileInfo["donado"];
   return (
     <div className="p-4 bg-white shadow">
-      <div className="grid grid-cols-4 text-center order-last md:order-first mt-20 md:mt-0">
+      <div className="grid grid-cols-2 text-center">
         <div>
           <p className="font-bold text-gray-700 text-xl">
             {godchildren && godchildren.length}
           </p>
           <p className="text-gray-400">Ahijados</p>
-        </div>
-        <div>
-          <p className="font-bold text-gray-700 text-xl">${gifted}</p>
-          <p className="text-gray-400">Donado</p>
-        </div>
-        <div>
-          <p className="font-bold text-gray-700 text-xl">2018</p>
-          <p className="text-gray-400">Miembro desde</p>
         </div>
         <div>
           {programs && (

@@ -19,6 +19,30 @@ const ProfileService = {
     const data = await response.json();
     return data;
   },
+  getDonations: async (email) => {
+    const response = await fetch("/api/donations", {
+      method: "POST",
+      cache: "no-store",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: email }),
+    });
+    const data = await response.json();
+    return data;
+  },
+  getStories: async (name) => {
+    const response = await fetch("/api/story", {
+      method: "POST",
+      cache: "no-store",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name: name }),
+    });
+    const data = await response.json();
+    return data;
+  },
 };
 
 export default ProfileService;

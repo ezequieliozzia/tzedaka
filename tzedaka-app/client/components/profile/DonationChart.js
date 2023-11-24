@@ -1,14 +1,12 @@
 "use client";
-import React from "react";
 
 import dynamic from "next/dynamic";
-import range from "@/utils/utils";
 
 const ApexCharts = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
 
-const DonationChart = () => {
+const DonationChart = ({ imgProperties }) => {
   const option = {
     chart: {
       id: "apexchart-example",
@@ -16,7 +14,7 @@ const DonationChart = () => {
       // width: "100%",
     },
     xaxis: {
-      categories: range(2012, 2021),
+      categories: imgProperties.xaxis,
     },
     stroke: {
       curve: "smooth",
@@ -26,12 +24,14 @@ const DonationChart = () => {
     },
   };
 
-  const series = [
-    {
-      name: "series-1",
-      data: [30, 40, 35, 50, 49, 60, 70, 91, 125],
-    },
-  ];
+  const series = [imgProperties.series];
+
+  // const series = [
+  //   {
+  //     name: "series-1",
+  //     data: [30, 40, 35, 50, 49, 60, 70, 91, 125],
+  //   },
+  // ];
   return (
     // <div>
     <div className="w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">

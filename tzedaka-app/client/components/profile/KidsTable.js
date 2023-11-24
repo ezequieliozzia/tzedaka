@@ -2,33 +2,22 @@ import React, { useState } from "react";
 import Modal from "./Modal";
 
 const KidsTable = (props) => {
-  const keys = ["name", "color", "program", "donation", "onClick"];
+  const keys = ["name", "program", "storyUrl"];
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [rowSelected, setRowSelected] = useState({});
 
   const headers = {
     name: "Nombre",
-    color: "Ultima Donación",
     program: "Programa",
-    donation: "Donación acumulada",
-    action: "Action",
+    storyUrl: "Historia",
   };
 
-  // const content = [
-  //   {
-  //     name: "Apple MacBook Pro 17",
-  //     color: "Silver",
-  //     category: "Laptop",
-  //     price: "$2999",
-  //     onClick: null,
-  //   },
-  // ];
   const content = props.info.map((kid) => {
     return {
       name: kid.ahijado,
       program: kid.programa,
-      donation: kid.donacion,
+      storyUrl: kid.url,
     };
   });
 
@@ -58,16 +47,12 @@ const KidsTable = (props) => {
               >
                 {row.name}
               </th>
-              <td className="px-6 py-4">{row.color}</td>
               <td className="px-6 py-4">{row.program}</td>
-              <td className="px-6 py-4">{row.donation}</td>
               <td className="px-6 py-4">
                 <a
-                  href="#"
+                  target="_blank"
+                  href={row.storyUrl}
                   className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                  onClick={() => {
-                    setRowSelected(row);
-                  }}
                 >
                   Ver más
                 </a>
