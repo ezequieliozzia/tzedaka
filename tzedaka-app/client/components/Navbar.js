@@ -71,7 +71,7 @@ const Navbar = () => {
               <UserButton afterSignOutUrl="/" />
             </SignedIn>
             <SignedOut>
-              <NavbarButton text={"Ingresar"} href={"/signInPage"}/>
+              <NavbarButton text={"Ya soy Padrino/Madrina"} href={"/signInPage"}/>
               <NavbarButton text={"Donar"} href={"/signInPage"} />
             </SignedOut>
           </div>
@@ -83,7 +83,7 @@ const Navbar = () => {
             <StyledNavbarButton href="/form" label="Donar" />
           </SignedIn>
           <SignedOut>
-            <StyledNavbarButton href="/signInPage" label="Ingresar" />
+            <StyledNavbarButton href="/signInPage" label="Ya soy Padrino/Madrina"/>
             <StyledNavbarButton href="/signInPage" label="Donar" />
           </SignedOut>
         </div>
