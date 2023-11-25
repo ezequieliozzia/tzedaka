@@ -59,19 +59,19 @@ const Navbar = () => {
         </div>
         <div className={`${isOpen ? "block" : "hidden"} justify-end md:space-x-8 list-none sm:justify-center flex flex-col sm:flex sm:flex-row sm:items-center`}>
           <NavbarButton text={"Inicio"} href={"/"} />
-          <NavbarButton text={"Programas"} href={"/programs"} />
+          <NavbarButton text={"Quiero apadrinar"} href={"/programs"} />
           <SignedIn>
-            <NavbarButton text={"Perfil"} href={"/profile"} />
+            <NavbarButton text={"Mi perfil"} href={"/profile"} />
           </SignedIn>
           <NavbarButton text={"Contacto"} href={"/form"} />
-          <NavbarButton text={"Sobre Nosotros"} href={"https://tzedaka.org.ar/la-fundacion/"} target={"_blank"}/>
+          <NavbarButton text={"Sobre nosotros"} href={"https://tzedaka.org.ar/la-fundacion/"} target={"_blank"}/>
           <div className="md:hidden sm:block">
             <SignedIn>
               <NavbarButton text={"Donar"} href={"/form"}/>
               <UserButton afterSignOutUrl="/" />
             </SignedIn>
             <SignedOut>
-              <NavbarButton text={"Ingresar"} href={"/signInPage"}/>
+              <NavbarButton text={"Ya soy Padrino/Madrina"} href={"/signInPage"}/>
               <NavbarButton text={"Donar"} href={"/signInPage"} />
             </SignedOut>
           </div>
@@ -83,7 +83,7 @@ const Navbar = () => {
             <StyledNavbarButton href="/form" label="Donar" />
           </SignedIn>
           <SignedOut>
-            <StyledNavbarButton href="/signInPage" label="Ingresar" />
+            <StyledNavbarButton href="/signInPage" label="Ya soy Padrino/Madrina"/>
             <StyledNavbarButton href="/signInPage" label="Donar" />
           </SignedOut>
         </div>
