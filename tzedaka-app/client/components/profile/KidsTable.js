@@ -17,7 +17,7 @@ const KidsTable = (props) => {
     return {
       name: kid.ahijado,
       program: kid.programa,
-      storyUrl: kid.url,
+      storyUrl: kid.historia,
     };
   });
 
@@ -49,13 +49,17 @@ const KidsTable = (props) => {
               </th>
               <td className="px-6 py-4">{row.program}</td>
               <td className="px-6 py-4">
-                <a
-                  target="_blank"
-                  href={row.storyUrl}
-                  className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                >
-                  Ver más
-                </a>
+                {row.storyUrl === null ? (
+                  "No dispinble"
+                ) : (
+                  <a
+                    target="_blank"
+                    href={row.storyUrl}
+                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                  >
+                    Ver más
+                  </a>
+                )}
               </td>
             </tr>
           ))}

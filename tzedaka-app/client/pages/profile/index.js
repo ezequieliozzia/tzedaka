@@ -15,8 +15,8 @@ const Profile = () => {
   const [donations, setDonations] = useState({});
 
   useEffect(() => {
-    // const email = "gg@marval.com";
-    const email = "testemail@ffg.com";
+    const email = "gg@marval.com";
+    // const email = "testemail@ffg.com";
     // const email = "padrino1@gmail.com";
 
     const loadData = async () => {
