@@ -83,7 +83,7 @@ const FormComponent = () => {
         </div>
         <div className="flex items-center justify-center">
           <button
-            className="bg-purple-800 text-white font-bold rounded py-2 px-4"
+            className="bg-purple-600 text-white font-bold rounded py-2 px-4"
             type="submit"
           >
             Enviar

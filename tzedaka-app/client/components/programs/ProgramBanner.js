@@ -32,7 +32,7 @@ const ProgramBanner = ({ program }) => {
           <StyledLinkButton
             href="/form"
             label="Apadrinar"
-            bgColor="bg-purple-800"
+            bgColor="bg-purple-600"
             textColor="text-white"
             hoverBgColor="bg-blue-200"
             hoverTextColor="text-white-800"
