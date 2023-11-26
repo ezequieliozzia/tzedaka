@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import bg from "../images/children-playing.jpg";
+import bg from "../images/home_2.JPG";
 import StyledLinkButton from "@/components/StyledLinkButton";
 import HomeMainText from "@/components/HomeMainText";
 import ShareButtons from "@/components/ShareButtons";
