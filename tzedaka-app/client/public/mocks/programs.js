@@ -1,9 +1,9 @@
 import idea from "../../images/Logo-IDEA.png";
 import uni from "../../images/UNI-Logo-transparencia.png";
 import abc from "../../images/abc.png";
-import banner_ABC from "../../images/Banner_ABC.jpg";
-import banner_IDEA from "../../images/Banner_IDEA.jpg";
-import banner_UNI from "../../images/Banner_UNI.jpg";
+import banner_ABC from "../../images/Logo-IDEA.png";
+import banner_IDEA from "../../images/UNI-Logo-transparencia.png";
+import banner_UNI from "../../images/abc.png";
 
 const programs = [
   {
