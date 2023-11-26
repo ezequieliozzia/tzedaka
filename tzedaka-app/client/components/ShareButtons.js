@@ -1,4 +1,5 @@
 import React from "react";
+import { FaInstagram } from 'react-icons/fa';
 
 const shareText = "¡Convertite en Padrino y ayudanos a cambiar una vida!";
 const buttonStyle = "border-2 duration-200 ease inline-flex items-center mb-1 mr-1 transition p-3 rounded-lg text-white border-purple-600 bg-purple-600 hover:bg-purple-700 hover:border-purple-700"
@@ -64,12 +65,22 @@ const EmailButton = () => {
 	);
 };
 
+const InstagramButton = () => {
+	const instagramProfileUrl = "https://www.instagram.com/fundaciontzedaka/";
+	return (
+	  <a className={buttonStyle} target="_blank" rel="noopener" href={instagramProfileUrl} aria-label="Visit on Instagram" draggable="false">
+			<FaInstagram className="w-6 h-6"/>
+	  </a>
+	);
+};
+
 const ShareButtons = () => {
 	return (
 		<div className="sharing-buttons flex flex-wrap">
 			<WhatsappButton />
 			<LinkedinButton />
 			<EmailButton />
+			<InstagramButton/>
 		</div>
 	);
 };
