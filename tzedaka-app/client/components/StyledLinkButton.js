@@ -27,7 +27,7 @@ const StyledLinkButton = ({
     <div>
       <Link href={href}>
         <div
-          className={`py-4 px-8 flex items-center justify-center text-white font-bold uppercase text-l rounded ${bgColor} hover:${
+          className={`py-2 px-4 sm:py-4 sm:px-8 flex items-center justify-center text-white font-bold uppercase text-xs sm:text-base rounded ${bgColor} hover:${
             isHovered ? hoverBgColor : bgColor
           }`}
           onMouseOver={handleHover}

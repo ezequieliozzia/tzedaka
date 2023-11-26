@@ -3,7 +3,7 @@ import { FaInstagram } from "react-icons/fa";
 
 const shareText = "¡Convertite en Padrino y ayudanos a cambiar una vida!";
 const buttonStyle =
-  "duration-200 ease inline-flex items-center mb-1 mr-1 transition p-3 rounded-lg text-white border-purple-600 bg-purple-600 hover:bg-purple-700 hover:border-purple-700";
+  "duration-200 ease inline-flex items-center mb-1 mr-1 transition p-1 sm:p-3 rounded-lg text-white border-purple-600 bg-purple-600 hover:bg-purple-700 hover:border-purple-700";
 
 // Removed by Tzedaká request - Uncomment if required
 // const FacebookButton = () => {

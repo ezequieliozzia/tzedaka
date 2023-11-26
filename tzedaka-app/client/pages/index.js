@@ -26,7 +26,7 @@ const Index = () => {
   }, [showShareButtons]);
 
   return (
-    <div className="relative h-screen mx-6 flex items-center justify-center overflow-hidden">
+    <div className="relative h-screen mx-6 flex items-center justify-center overflow-hidden h-84vh">
       <Image src={bg.src} fill style={{ objectFit: "cover" }} />
       <div className="absolute inset-0 bg-gray-900 bg-opacity-50 flex flex-col items-center flex">
         <HomeMainText />
@@ -57,7 +57,7 @@ const Index = () => {
                   isLoaded ? "opacity-100" : "opacity-0"
                 }`}
               >
-                <div className="mt-4 mb-2">
+                <div className="mt-2 sm:mt-4 sm:mb-2">
                   <BouncingDownArrow />
                 </div>
                 <ShareButtons />
