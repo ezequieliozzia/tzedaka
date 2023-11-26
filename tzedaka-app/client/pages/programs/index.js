@@ -57,7 +57,7 @@ const Card = ({ programa }) => {
         <div className="w-5/6">{programa.summaryDescription}</div>
         <Link href={`/programs/details/${programa.programId}`}>
           <div className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-5">
-            Conocelos!
+            ¡Conocelos!
           </div>
         </Link>
       </div>

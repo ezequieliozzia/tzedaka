@@ -1,7 +1,15 @@
-import Link from 'next/link';
-import React, { useState } from 'react';
+import Link from "next/link";
+import React, { useState } from "react";
 
-const StyledLinkButton = ({ href, label, bgColor, textColor, hoverBgColor, hoverTextColor, onClick }) => {
+const StyledLinkButton = ({
+  href,
+  label,
+  bgColor,
+  textColor,
+  hoverBgColor,
+  hoverTextColor,
+  onClick,
+}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleHover = () => {
@@ -16,10 +24,12 @@ const StyledLinkButton = ({ href, label, bgColor, textColor, hoverBgColor, hover
   };
 
   return (
-    <div className="flex inset-0 flex justify-center items-end my-10">
+    <div>
       <Link href={href}>
         <div
-          className={`py-4 px-8 text-white font-bold uppercase text-l rounded ${bgColor} hover:${isHovered ? hoverBgColor : bgColor}`}
+          className={`py-4 px-8 flex items-center justify-center text-white font-bold uppercase text-l rounded ${bgColor} hover:${
+            isHovered ? hoverBgColor : bgColor
+          }`}
           onMouseOver={handleHover}
           onClick={handleClick}
         >
@@ -29,6 +39,5 @@ const StyledLinkButton = ({ href, label, bgColor, textColor, hoverBgColor, hover
     </div>
   );
 };
-
 
 export default StyledLinkButton;

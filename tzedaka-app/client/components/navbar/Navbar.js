@@ -7,6 +7,7 @@ import Logo from "./Logo";
 import NavbarButtons from "./NavbarButtons";
 import LoginSection from "./LoginSection";
 import HamburguerButton from "./HamburguerButton";
+import SignedOffButtons from "./SignedOffButtons";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +15,7 @@ const Navbar = () => {
   return (
     <nav className="bg-transparent p-6">
       <div>
-        <div className="flex justify-around sm:justify-between">
+        <div className="flex justify-between">
           <Logo />
           {/* <HamburguerButton isOpen={isOpen} setIsOpen={setIsOpen} /> */}
           <div
@@ -23,14 +24,14 @@ const Navbar = () => {
             <NavbarButtons />
           </div>
           <LoginSection isOpen={isOpen} />
-        </div>
-        <div className="flex justify-end sm:hidden">
-          <HamburguerButton isOpen={isOpen} setIsOpen={setIsOpen} />
-          {isOpen && (
-            <ul className="mt-2">
-              <NavbarButtons />
-            </ul>
-          )}
+          <div className="flex justify-end sm:hidden">
+            <HamburguerButton isOpen={isOpen} setIsOpen={setIsOpen} />
+            {isOpen && (
+              <ul className="mt-2">
+                <SignedOffButtons />
+              </ul>
+            )}
+          </div>
         </div>
       </div>
     </nav>
