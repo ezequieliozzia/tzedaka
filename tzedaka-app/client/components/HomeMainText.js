@@ -2,8 +2,8 @@ import { universe45Light, universe65Bold } from "../utils/fonts";
 
 const HomeMainText = () => {
     return (
-      <div className="text-white text-center md:w-2/6 md:h-1/3 md:mr-20">
-        <p className={`mt-4 text-4xl font-bold ${universe65Bold.className}`}>
+      <div className="text-white  md:w-2/6 md:h-1/3 md:mr-20">
+        <p className={`mt-4 text-xl text-center font-bold ${universe65Bold.className}`}>
           TE DAMOS LA BIENVENIDA
         </p>
         <p className={`m-6 text-xl ${universe45Light.className}`}>
