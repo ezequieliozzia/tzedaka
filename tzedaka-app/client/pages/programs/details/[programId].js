@@ -1,9 +1,9 @@
-import ProgramsGrid from "../../../components/programs/ProgramsGrid";
+import ProgramsGrid from "../../../components/programs/details/ProgramsGrid";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import programs from "../../../public/mocks/programs.js";
 import kids from "../../../public/mocks/kids";
-import ProgramBanner from "../../..//components/programs/ProgramBanner";
+import ProgramBanner from "../../../components/programs/details/ProgramsBanner";
 import { universe45Light } from "../../../utils/fonts";
 import Spinner from "@/components/Spinner";
 import Carousel from "@/components/programs/Carousel";

@@ -14,6 +14,8 @@ const programs = [
     image: abc,
     scale: "100",
     bannerImage: banner_ABC,
+    summaryDescription:
+      "ABC garantiza el acceso digno a educación a niños y niñas en etapa inicial y primaria.",
   },
   {
     programId: 1,
@@ -23,6 +25,8 @@ const programs = [
     image: idea,
     scale: "50",
     bannerImage: banner_IDEA,
+    summaryDescription:
+      "IDEA garantiza educación digna a jóvenes y adolescentes en secundaria y escuela media",
   },
   {
     programId: 2,
@@ -32,6 +36,8 @@ const programs = [
     image: uni,
     scale: "100",
     bannerImage: banner_UNI,
+    summaryDescription:
+      "UNI apoya la educación de estudiantes de carreras terciarias y universitarias.",
   },
 ];
 

@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link"
-import StyledLinkButton from "../StyledLinkButton";
+import Link from "next/link";
+import StyledLinkButton from "../../StyledLinkButton";
 
 const ProgramBanner = ({ program }) => {
   return (
@@ -23,8 +23,8 @@ const ProgramBanner = ({ program }) => {
               {program.programDescription}
             </div>
             <img
-              src={program.image.src} 
-              className="absolute object-contain right-0 top-1/2 transform -translate-y-1/2 h-48" 
+              src={program.image.src}
+              className="absolute object-contain right-0 top-1/2 transform -translate-y-1/2 h-48"
             />
           </div>
         </div>
@@ -36,7 +36,7 @@ const ProgramBanner = ({ program }) => {
             textColor="text-white"
             hoverBgColor="bg-blue-200"
             hoverTextColor="text-white-800"
-            />
+          />
         </div>
       </div>
     </>
