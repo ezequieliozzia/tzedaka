@@ -47,41 +47,50 @@ def contactInfo():
 
         if error is None:
             try:
-                query = sf.query("SELECT Padrino__r.Name, Padrino__r.Email, Padrino__r.npo02__MembershipJoinDate__c ,Donaci_n__r.npe03__Amount__c, Ahijado__r.Name, Ahijado__r.Programa__c, Ahijado__r.ltima_entrevista__c FROM Padrinazgo__c WHERE Padrino__r.Email = '" + email + "'")
+                query = sf.query("SELECT Padrino__r.Name, Padrino__r.Email, Ahijado__r.Id, Ahijado__r.Name, Ahijado__r.Programa__c FROM Padrinazgo__c WHERE Ahijado__r.Id != null and Padrino__r.Email != null and Padrino__r.Email = '" + email + "'")
+
+                # beneficiario__c is the id from the beneficiario 
+                query_stories = sf.query('SELECT Beneficiario__c, Historia_V_nculo__c from Historia__c where Historia_V_nculo__c != null')
+
+                stories = {}
+                for entry in range(0,query_stories['totalSize']):
+                    id = query_stories['records'][entry]['Beneficiario__c']
+                    url = query_stories['records'][entry]['Historia_V_nculo__c']
+                    if id in stories:
+                        stories[id].append(url)
+                    else:
+                        stories[id] = [url]
 
                 dataDict = {
-                    'contacto': query['records'][0]['Padrino__r']['Name'], 
-                    # fechaMembresia no anda
-                    'fechaMembresia': query['records'][0]['Padrino__r']['npo02__MembershipJoinDate__c']
+                    'contacto': query['records'][0]['Padrino__r']['Name']
                 }
 
-
-                donaciones = []
                 programas = []
 
                 for entry in range(0,query['totalSize']):
-                    donaciones.append( query['records'][entry]['Donaci_n__r']['npe03__Amount__c'] )
                     programas.append( query['records'][entry]['Ahijado__r']['Programa__c'] )
 
                 dataList = []
                 
                 for entry in range(0,query['totalSize']):
+                    id_ahijado =  query['records'][entry]['Ahijado__r']['Id']
+                    story = None if id_ahijado not in stories else stories[id_ahijado][-1]
+
                     ahijadosDict = {
                         'ahijado':   query['records'][entry]['Ahijado__r']['Name'],
-                        'donacion': query['records'][entry]['Donaci_n__r']['npe03__Amount__c'],
                         'programa':   query['records'][entry]['Ahijado__r']['Programa__c'],
-                        'entrevista': query['records'][entry]['Ahijado__r']['ltima_entrevista__c']
+                        'historia': story
                     }
                     
                     dataList.append(ahijadosDict)
 
                 dataDict["programas"] = list(set(programas))    
                 # Numero total de donaciones
-                dataDict["donado"] = sum(donaciones)
                 dataDict["ahijados"] = dataList
                 data = dataDict
                 
-            except:
+            except Exception as e:
+                print("Exception: ", e)
                 data = {}
 
         return jsonify(data)

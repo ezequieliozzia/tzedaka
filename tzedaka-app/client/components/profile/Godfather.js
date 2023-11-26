@@ -4,7 +4,6 @@ const Godfather = (props) => {
   const fullName = props.mainInfo["fullName"];
   const programs = props.profileInfo["programas"];
   const godchildren = props.profileInfo["ahijados"];
-  const memberShipDate = props.profileInfo["fechaMembresia"];
   const gifted = props.profileInfo["donado"];
   return (
     <div className="p-4 bg-white shadow">
