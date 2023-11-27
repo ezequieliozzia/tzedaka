@@ -11,6 +11,7 @@ const ProgramBanner = ({ program }) => {
           src={program.bannerImage.src}
           fill
           style={{ objectFit: "cover" }}
+          priority
         />
         <div className="absolute inset-0 bg-gray-900 bg-opacity-50"></div>
 

@@ -1,14 +1,13 @@
-import programs from "../../public/mocks/programs.js";
-import { universe45Light } from "../../utils/fonts";
 import Link from "next/link.js";
+import programs from "../../public/mocks/programs.js";
 
 const Programs = () => {
   return (
     <>
-      <div className={`text-3xl font-bold ${universe45Light} my-8 mx-10`}>
+      <div className={`text-3xl font-tzedaka-titles my-8 mx-10`}>
         ¿Qué significa ser un Padrino o Madrina?
       </div>
-      <div className={`text-xl ${universe45Light} my-8 mx-10`}>
+      <div className={`font-tzedaka-body my-8 mx-10`}>
         Es acompañar a chicos y jóvenes provenientes de familias vulnerables
         durante toda su escolaridad, para que puedan completar sus trayectorias
         educativas y tengan mejores oportunidades para construir su futuro. La
@@ -16,7 +15,7 @@ const Programs = () => {
         estudiantes en tres niveles: ABC para escolaridad primaria, IDEA para
         secundaria y UNI para estudiantes universitarios.
       </div>
-      <div className={`text-3xl font-bold ${universe45Light} my-8 mx-10`}>
+      <div className={`text-3xl font-tzedaka-titles my-8 mx-10`}>
         ¡Conocé las historias de los chicos de cada programa!
       </div>
       <div className="flex items-center justify-center">
@@ -52,7 +51,7 @@ const Card = ({ programa }) => {
           </div>
         </div>
       </Link>
-      <div className="sm:hidden flex flex-col items-center justify-center">
+      <div className="sm:hidden font-tzedaka-body flex flex-col items-center justify-center">
         <div className="w-5/6">{programa.programDescription}</div>
         <div className="w-5/6">{programa.summaryDescription}</div>
         <Link href={`/programs/details/${programa.programId}`}>

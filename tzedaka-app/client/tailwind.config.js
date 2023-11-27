@@ -24,6 +24,8 @@ module.exports = {
     },
     fontFamily: {
       MyFont: ["raleway", "Helvetica", "Arial", "sans-serif"],
+      "tzedaka-body": ["TzedakaEmediaBody", "sans-serif"],
+      "tzedaka-titles": ["TzedakaEmediaEmphasis", "sans-serif"],
     },
   },
   plugins: [

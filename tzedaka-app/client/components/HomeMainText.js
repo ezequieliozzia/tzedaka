@@ -3,14 +3,10 @@ import { universe45Light, universe65Bold } from "../utils/fonts";
 const HomeMainText = () => {
   return (
     <div className="text-white lg:w-2/6">
-      <p
-        className={`mt-4 text-sm sm:text-xl text-center font-bold ${universe65Bold.className}`}
-      >
+      <p className={`mt-8 text-sm sm:text-xl text-center font-tzedaka-titles`}>
         TE DAMOS LA BIENVENIDA
       </p>
-      <p
-        className={`m-2 sm:m-6 text-sm sm:text-xl ${universe45Light.className}`}
-      >
+      <p className={`m-2 sm:m-6 text-sm sm:text-lg font-tzedaka-body`}>
         Gracias por entrar a esta página, donde tenés la posibilidad de cambiar
         una vida. En esencia, eso es lo que hace un Padrino o una Madrina: darle
         a un chico o a un joven una oportunidad, acompañarlo en su educación y

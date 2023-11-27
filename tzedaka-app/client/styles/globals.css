@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Tzedaka1";
+  src: url("../resources/fonts/Univers_45_Light_Regular.otf");
+}
+
+@font-face {
+  font-family: "Tzedaka2";
+  src: url("../resources/fonts/Univers_55_Roman.otf");
+}
+
+@font-face {
+  font-family: "Tzedaka3";
+  src: url("../resources/fonts/Univers_65_Bold_Regular.ttf");
+}
+
+@font-face {
+  font-family: "TzedakaEmediaEmphasis";
+  src: url("../resources/fonts/Arial_Bold.ttf");
+  /* font-weight: 100; */
+}
+
+@font-face {
+  font-family: "TzedakaEmediaBody";
+  src: url("../resources/fonts/Arial_Regular.ttf");
+}
+
 @layer base {
   .font-outline-2 {
     -webkit-text-stroke: 2px black;
