@@ -8,6 +8,7 @@ import NavbarButtons from "./NavbarButtons";
 import LoginSection from "./LoginSection";
 import HamburguerButton from "./HamburguerButton";
 import SignedOffButtons from "./SignedOffButtons";
+import Link from "next/link";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,11 +17,10 @@ const Navbar = () => {
     <nav className="bg-transparent p-6">
       <div>
         <div className="flex justify-between">
-          <Logo />
-          {/* <HamburguerButton isOpen={isOpen} setIsOpen={setIsOpen} /> */}
-          <div
-            className={`hidden justify-end md:space-x-8 list-none sm:justify-center flex flex-col sm:flex sm:flex-row sm:items-center`}
-          >
+          <Link href={"/"}>
+            <Logo/>
+          </Link>
+          <div className={`hidden justify-end md:space-x-8 list-none sm:justify-center flex flex-col sm:flex sm:flex-row sm:items-center`}>
             <NavbarButtons />
           </div>
           <LoginSection isOpen={isOpen} />
