@@ -4,7 +4,7 @@ import FormComponent from "@/components/form/Form";
 const Form = () => {
   return (
     <div className="flex items-center justify-center">
-      <div className="w-1/2">
+      <div className="w-5/6 sm:w-1/2">
         <FormComponent />
       </div>
     </div>
