@@ -30,7 +30,7 @@ const FormComponent = () => {
           {/* The following div manages all fields */}
           <div>
             {/* <div className="flex items-center justify-center"> */}
-            <div className="grid grid-cols-2 gap-3 mt-10">
+            <div className="sm:grid sm:grid-cols-2 gap-3 mt-10">
               <FreeTextField type="text" id="name" label="Nombre" required />
               <FreeTextField
                 type="text"
@@ -55,7 +55,7 @@ const FormComponent = () => {
               options={countries}
               selected="Argentina"
             />
-            <div className="grid grid-cols-2 gap-3">
+            <div className="sm:grid sm:grid-cols-2 gap-3">
               <FreeTextField type="text" id="state" label="Provincia" />
               <FreeTextField type="text" id="city" label="Localidad" />
 
@@ -72,13 +72,12 @@ const FormComponent = () => {
               selected="ABC"
             />
 
-            <CommentField 
-              id="comment" 
-              label="Comentario" 
-              height="h-40" 
-              maxChars={300} 
+            <CommentField
+              id="comment"
+              label="Comentario"
+              height="h-40"
+              maxChars={300}
             />
-
           </div>
         </div>
         <div className="flex items-center justify-center">
