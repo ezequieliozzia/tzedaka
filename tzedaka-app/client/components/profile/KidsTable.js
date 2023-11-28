@@ -50,7 +50,7 @@ const KidsTable = (props) => {
               <td className="px-6 py-4">{row.program}</td>
               <td className="px-6 py-4">
                 {row.storyUrl === null ? (
-                  "No dispinble"
+                  "No disponible"
                 ) : (
                   <a
                     target="_blank"
