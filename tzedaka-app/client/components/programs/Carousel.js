@@ -63,12 +63,12 @@ const Carousel = () => {
           ))}
         </div>
         <div className="flex font-bold justify-center items-center">
-          <div className="absolute top-[67%] text-2xl bg-black/20 text-white">
+          <div className="absolute top-[67%] text-lg sm:text-2xl bg-black/20 text-white">
             {slides[currentIndex].name}
           </div>
         </div>
         <div className="flex justify-center items-center">
-          <div className="absolute top-[75%] text-2xl bg-black/20 text-white">
+          <div className="absolute top-[75%] text-base sm:text-2xl bg-black/20 text-white">
             {slides[currentIndex].description}
           </div>
         </div>

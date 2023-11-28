@@ -25,7 +25,7 @@ const ProgramBanner = ({ program }) => {
             </div>
             <img
               src={program.image.src}
-              className="absolute object-contain right-0 top-1/2 transform -translate-y-1/2 h-48"
+              className="absolute -bottom-24 right-0 sm:right-0 sm:top-1/2 sm:-translate-y-1/2 h-16 sm:h-48"
             />
           </div>
         </div>

@@ -44,10 +44,8 @@ const Post = () => {
       <div>
         <ProgramBanner program={programs[programId]} />
         <div className="flex flex-col justify-center items-center">
-          <div
-            className={`text-3xl m-5 underline ${universe45Light.className}`}
-          >
-            Conocé a los chicos y sus historias!
+          <div className={`text-xl m-5 font-tzedaka-titles`}>
+            ¡Conocé a los chicos y sus historias!
           </div>
           <div className="w-10/12 my-10">
             <ProgramsGrid

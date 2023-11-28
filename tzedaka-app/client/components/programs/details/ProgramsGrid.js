@@ -4,14 +4,17 @@ import ProgramsCard from "./ProgramsCard";
 
 const ProgramsGrid = ({ programs, kids, programId }) => {
   return (
-    <div className="grid grid-cols-3 gap-6">
+    <div className="sm:grid sm:grid-cols-3 sm:gap-6 ">
       {kids.map((kid, index) => (
-        <ProgramsCard
-          key={`programs-card-${index}`}
-          programs={programs}
-          kid={kid}
-          programId={programId}
-        />
+        <div className="p-2">
+          <ProgramsCard
+            key={`programs-card-${index}`}
+            programs={programs}
+            kid={kid}
+            programId={programId}
+          />
+          {/* <div className="font-tzedaka-body sm:hidden">{kid.description}</div> */}
+        </div>
       ))}
     </div>
   );
