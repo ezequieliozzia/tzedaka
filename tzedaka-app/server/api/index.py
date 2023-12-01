@@ -97,13 +97,14 @@ def contactInfo():
 
 
 # Es necesario que se encuentren logueados para poder ver esto? Imagino que no
-@app.route("/beneficiaries", methods=['POST', 'GET'])
+@app.route("/beneficiaries", methods=['GET'])
 @cross_origin()
 def beneficiaries():
     if request.method == 'GET':
         # query = sf.query("SELECT Name, Edad__c, Programa__c, PAG_Descripci_n__c FROM Beneficiario__c WHERE C_digo_del_beneficiario__c NOT IN (SELECT Ahijado__c FROM Padrinazgo__c)")
-        queryAhijados = sf.query("SELECT Name, Edad__c, Programa__c, PAG_Descripci_n__c FROM Beneficiario__c")
-        queryPadrinazgos = sf.query("SELECT Ahijado__r.Name, SUM(Cobertura_padrinazgo__c) Cobertura FROM Padrinazgo__c GROUP BY Ahijado__r.Name")
+        program = request.args.get('program')
+        queryAhijados = sf.query(f"SELECT Name, Edad__c, Programa__c, PAG_Frase__c , G_nero__c , PAG_Descripci_n__c FROM Beneficiario__c WHERE Name != null AND Programa__c = '{program}'")
+        queryPadrinazgos = sf.query(f"SELECT Ahijado__r.Name, Ahijado__r.Programa__c,  SUM(Cobertura_padrinazgo__c) cobertura FROM Padrinazgo__c WHERE Ahijado__r.Name != null AND Ahijado__r.Programa__c = '{program}' GROUP BY Ahijado__r.Name, Ahijado__r.Programa__c HAVING SUM(Cobertura_padrinazgo__c) >= 100 ORDER BY Ahijado__r.Name ASC")
 
         ahijados = []
         padrinazgos = []
@@ -111,30 +112,34 @@ def beneficiaries():
 
         for entry in range(0, queryAhijados['totalSize']):
             
-            data = { "Nombre": queryAhijados['records'][entry]['Name'],
+            desc =  queryAhijados['records'][entry]['PAG_Descripci_n__c']
+
+            data = { 
+                "Nombre": queryAhijados['records'][entry]['Name'],
                     "Edad": queryAhijados['records'][entry]['Edad__c'],
                     "Programa": queryAhijados['records'][entry]['Programa__c'],
-                    "Descripcion": queryAhijados['records'][entry]['PAG_Descripci_n__c']
+                    "Descripcion": queryAhijados['records'][entry]['PAG_Descripci_n__c'],
+                    "Frase": queryAhijados['records'][entry]['PAG_Frase__c'],
+                    "Genero": queryAhijados['records'][entry]['G_nero__c']
             }
-
-            ahijados.append(data)
+            if desc:
+                ahijados.append(data)
             
         for entry in range(0, queryPadrinazgos['totalSize']):
-            # Si el padrinazgo no tiene ahijado rompe todo (porque hay entrada de padrinazgo sin beneficiario???)
-            if ( queryPadrinazgos['records'][entry]['Name'] != None and queryPadrinazgos['records'][entry]['Cobertura'] >= 100 ):
-                padrinazgos.append( queryPadrinazgos['records'][entry]['Name'] )
+            padrinazgos.append(queryPadrinazgos['records'][entry]['Name'])
 
         for x in range(0, len(ahijados)):
             ahijados[x]["Nombre"] not in padrinazgos and noApadrinados.append(ahijados[x])
 
-        return jsonify({"ahijados": random.sample(noApadrinados, 6)})
+        children_shown = min(6, len(noApadrinados))
+        return jsonify({"ahijados": random.sample(noApadrinados, children_shown)})
     
 @app.route("/events", methods=['GET'])
 @cross_origin()
 def eventos():
     eventos = []
 
-    queryEventos = sf.query("SELECT OwnerId, Name, LastModifiedById, Im_gen__c, Fecha__c, Descripci_n__c, CreatedById FROM PAG_eventos__c")
+    queryEventos = sf.query("SELECT OwnerId, Name, LastModifiedById, Im_gen__c, Fecha__c, Descripci_n__c, CreatedById, Programa_del_evento__c FROM PAG_eventos__c")
 
     for entry in range(0, queryEventos['totalSize']):
             
@@ -145,6 +150,7 @@ def eventos():
                     "Fecha": queryEventos['records'][entry]['Fecha__c'],
                     "Descripcion": queryEventos['records'][entry]['Descripci_n__c'],
                     "CreatedById": queryEventos['records'][entry]['CreatedById'],
+                    "Programa": queryEventos['records'][entry]['Programa_del_evento__c']
         }
 
         eventos.append(data)
