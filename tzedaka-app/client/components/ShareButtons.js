@@ -1,21 +1,20 @@
 import React from "react";
-import { FaInstagram } from "react-icons/fa";
+// import { FaInstagram } from "react-icons/fa";
 
 const shareText = "¡Convertite en Padrino y ayudanos a cambiar una vida!";
 const buttonStyle =
   "duration-200 ease inline-flex items-center mb-1 mr-1 transition p-1 sm:p-3 rounded-lg text-white border-purple-600 bg-purple-600 hover:bg-purple-700 hover:border-purple-700";
 
-// Removed by Tzedaká request - Uncomment if required
-// const FacebookButton = () => {
-// 	return (
-// 		<a className={buttonStyle} target="_blank" rel="noopener" href={`https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftzedaka-neon.vercel.app%2F&quote=${encodeURIComponent(shareText)}`} aria-label="Share on Facebook" draggable="false">
-// 			<svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-6 h-6">
-// 				<title>Facebook</title>
-// 				<path d="M379 22v75h-44c-36 0-42 17-42 41v54h84l-12 85h-72v217h-88V277h-72v-85h72v-62c0-72 45-112 109-112 31 0 58 3 65 4z"></path>
-// 			</svg>
-// 		</a>
-// 	);
-// };
+const FacebookButton = () => {
+	return (
+		<a className={buttonStyle} target="_blank" rel="noopener" href={`https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftzedaka-neon.vercel.app%2F&quote=${encodeURIComponent(shareText)}`} aria-label="Share on Facebook" draggable="false">
+			<svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-6 h-6">
+				<title>Facebook</title>
+				<path d="M379 22v75h-44c-36 0-42 17-42 41v54h84l-12 85h-72v217h-88V277h-72v-85h72v-62c0-72 45-112 109-112 31 0 58 3 65 4z"></path>
+			</svg>
+		</a>
+	);
+};
 
 // Removed by Tzedaká request - Uncomment if required
 // const TwitterButton = () => {
@@ -106,29 +105,29 @@ const EmailButton = () => {
   );
 };
 
-const InstagramButton = () => {
-  const instagramProfileUrl = "https://www.instagram.com/fundaciontzedaka/";
-  return (
-    <a
-      className={buttonStyle}
-      target="_blank"
-      rel="noopener"
-      href={instagramProfileUrl}
-      aria-label="Visit on Instagram"
-      draggable="false"
-    >
-      <FaInstagram className="w-6 h-6" />
-    </a>
-  );
-};
+// const InstagramButton = () => {
+//   const instagramProfileUrl = "https://www.instagram.com/fundaciontzedaka/";
+//   return (
+//     <a
+//       className={buttonStyle}
+//       target="_blank"
+//       rel="noopener"
+//       href={instagramProfileUrl}
+//       aria-label="Visit on Instagram"
+//       draggable="false"
+//     >
+//       <FaInstagram className="w-6 h-6" />
+//     </a>
+//   );
+// };
 
 const ShareButtons = () => {
   return (
     <div className="sharing-buttons flex items-center justify-center flex-wrap">
       <WhatsappButton />
+      <FacebookButton />
       <LinkedinButton />
       <EmailButton />
-      <InstagramButton />
     </div>
   );
 };
