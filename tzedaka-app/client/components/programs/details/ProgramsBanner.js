@@ -15,7 +15,7 @@ const ProgramBanner = ({ program }) => {
         />
         <div className="absolute inset-0 bg-gray-900 bg-opacity-50"></div>
 
-        <div className="absolute flex flex-col items-center justify-center md:items-start md:justify-start">
+        <div className="absolute">
           <div className="md:w-2/6 m-5">
             <div className="text-white font-bold text-3xl uppercase ">
               {program.programName}
