@@ -26,9 +26,15 @@ const Index = () => {
   }, [showShareButtons]);
 
   return (
-    <div className="relative mx-6 flex items-center justify-center overflow-auto h-84vh">
-      <Image src={bg.src} fill style={{ objectFit: "cover" }} priority />
-      <div className="absolute inset-0 bg-gray-900 bg-opacity-50 flex flex-col items-center flex">
+    <div className="relative mx-6 flex items-center justify-center h-84vh">
+      <Image
+        src={bg.src}
+        fill
+        style={{ objectFit: "cover" }}
+        alt="home-background-image"
+        priority
+      />
+      <div className="absolute inset-0 bg-gray-900 bg-opacity-75 flex flex-col items-center">
         <HomeMainText />
         <div className="flex flex-col sm:flex-row sm:space-x-4">
           <div className="p-2">

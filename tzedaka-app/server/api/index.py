@@ -10,7 +10,7 @@ from simple_salesforce import Salesforce, format_soql
 
 load_dotenv()
 
-# WINDOWS: python -m flask --app main run --debug
+# WINDOWS: python -m flask --app index run --debug
 # MAC: flask run
 
 sf = Salesforce( username        = os.getenv('FFG_USERNAME'),
