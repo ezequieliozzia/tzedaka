@@ -5,7 +5,7 @@ import banner_ABC from "../../images/Banner_ABC.jpg";
 import banner_IDEA from "../../images/Banner_IDEA.jpg";
 import banner_UNI from "../../images/Banner_UNI.jpg";
 import abc_logo from "../../images/abc.png";
-import idea_logo from "../../images/Logo-idea.png";
+import idea_logo from "../../images/Logo-IDEA.png";
 import uni_logo from "../../images/UNI-Logo-transparencia.png";
 
 const programs = [
