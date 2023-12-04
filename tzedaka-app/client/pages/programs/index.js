@@ -43,7 +43,7 @@ const Card = ({ programa }) => {
             </div>
             <img
               alt=""
-              className={`object-contain h-full w-full aspect-square sm:group-hover:scale-110 transition duration-300 ease-in-out`}
+              className={`object-contain h-full w-full aspect-auto sm:group-hover:scale-110 transition duration-300 ease-in-out`}
               src={programa.image.src}
             />
           </div>
