@@ -47,10 +47,10 @@ def contactInfo():
 
         if error is None:
             try:
-                query = sf.query("SELECT Padrino__r.Name, Padrino__r.Email, Ahijado__r.Id, Ahijado__r.Name, Ahijado__r.Programa__c FROM Padrinazgo__c WHERE Ahijado__r.Id != null and Padrino__r.Email != null and Padrino__r.Email = '" + email + "'")
+                query = sf.query("SELECT Padrino__r.Name, Padrino__r.Correo_para_comunicaciones__c, Ahijado__r.Id, Ahijado__r.Name, Ahijado__r.Programa__c FROM Padrinazgo__c WHERE Ahijado__r.Id != null and Padrino__r.Correo_para_comunicaciones__c != null and Padrino__r.Correo_para_comunicaciones__c = '" + email + "'")
 
                 # beneficiario__c is the id from the beneficiario 
-                query_stories = sf.query('SELECT Beneficiario__c, Historia_V_nculo__c from Historia__c where Historia_V_nculo__c != null')
+                query_stories = sf.query('SELECT Beneficiario__c, Historia_V_nculo__c from Historia__c')
 
                 stories = {}
                 for entry in range(0,query_stories['totalSize']):
@@ -202,7 +202,7 @@ def donations():
         if error is None:
             try:
                 # query = sf.query("SELECT Name, npe03__Amount__c,npsp__StartDate__c,npsp__EndDate__c, npe03__Date_Established__c, npsp__InstallmentFrequency__c, npe03__Installment_Period__c, npe03__Total_Paid_Installments__c, RecordTypeId, npe03__Paid_Amount__c FROM npe03__Recurring_Donation__c WHERE npe03__Contact__r.Email = '" + email + "'")
-                query = sf.query("SELECT npe03__Amount__c,npsp__StartDate__c,npsp__EndDate__c, npsp__InstallmentFrequency__c, npe03__Installment_Period__c FROM npe03__Recurring_Donation__c WHERE npe03__Contact__r.Email = '" + email + "'")
+                query = sf.query("SELECT npe03__Amount__c,npsp__StartDate__c,npsp__EndDate__c, npsp__InstallmentFrequency__c, npe03__Installment_Period__c FROM npe03__Recurring_Donation__c WHERE npe03__Contact__r.Correo_para_comunicaciones__c = '" + email + "'")
 
                 results = []
 
