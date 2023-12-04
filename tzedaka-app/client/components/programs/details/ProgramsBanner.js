@@ -24,7 +24,7 @@ const ProgramBanner = ({ program }) => {
               {program.programDescription}
             </div>
             <img
-              src={program.image.src}
+              src={program.logo.src}
               className="absolute -bottom-24 right-0 sm:right-0 sm:top-1/2 sm:-translate-y-1/2 h-16 sm:h-48"
             />
           </div>
