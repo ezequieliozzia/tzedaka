@@ -15,32 +15,35 @@ const Profile = () => {
   const [donations, setDonations] = useState({});
 
   useEffect(() => {
-    const email = "gg@marval.com";
-    // const email = "testemail@ffg.com";
-    // const email = "padrino1@gmail.com";
+    console.log("clerk user: ", user);
+    if (user) {
+      const email = user.primaryEmailAddress.emailAddress;
+      // const email = "testemail@ffg.com";
+      // const email = "padrino1@gmail.com";
 
-    const loadData = async () => {
-      try {
-        const childrenInfo = await ProfileService.fetchProfileInfo(email);
-        console.log("childrenInfo: ", childrenInfo);
-        if (Object.keys(childrenInfo).length === 0) {
+      const loadData = async () => {
+        try {
+          const childrenInfo = await ProfileService.fetchProfileInfo(email);
+          console.log("childrenInfo: ", childrenInfo);
+          if (Object.keys(childrenInfo).length === 0) {
+            setError(true);
+          }
+          setUserInfo({ mainInfo: user, childrenInfo: childrenInfo });
+          setLoading(false);
+
+          const donationsInfo = await ProfileService.getDonations(email);
+
+          setDonations({
+            xaxis: donationsInfo.data_x,
+            series: { name: "Donaciones", data: donationsInfo.data_y },
+          });
+        } catch (e) {
           setError(true);
         }
-        setUserInfo({ mainInfo: user, childrenInfo: childrenInfo });
-        setLoading(false);
-
-        const donationsInfo = await ProfileService.getDonations(email);
-
-        setDonations({
-          xaxis: donationsInfo.data_x,
-          series: { name: "Donaciones", data: donationsInfo.data_y },
-        });
-      } catch (e) {
-        setError(true);
-      }
-    };
-    loadData();
-  }, []);
+      };
+      loadData();
+    }
+  }, [user]);
 
   console.log("donations : ", donations);
 
