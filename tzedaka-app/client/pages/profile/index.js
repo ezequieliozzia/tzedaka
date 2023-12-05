@@ -6,6 +6,9 @@ import KidsTable from "@/components/profile/KidsTable";
 import { useUser } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 import ProfileService from "../../services/ProfileService";
+import StyledLinkButton from "@/components/StyledLinkButton";
+import BouncingDownArrow from "@/components/BouncingDownArrow";
+import ShareButtons from "@/components/ShareButtons";
 
 const Profile = () => {
   const { user } = useUser();
@@ -13,6 +16,23 @@ const Profile = () => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
   const [donations, setDonations] = useState({});
+  const [showShareButtons, setShowShareButtons] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const handleInviteClick = (e) => {
+    e.preventDefault(); // Prevent redirection
+    setShowShareButtons((prev) => !prev); // Alternates visibility of ShareButtons
+  };
+
+  useEffect(() => {
+    let timeout;
+    if (showShareButtons) {
+      timeout = setTimeout(() => setIsLoaded(true), 50); // Establish isLoaded to true after 50ms
+    } else {
+      setIsLoaded(false); // Restablish isLoaded to false
+    }
+    return () => clearTimeout(timeout); // Clears timeout if component unmounts or if showShareButtons changes before timeout triggers
+  }, [showShareButtons]);
 
   useEffect(() => {
     console.log("clerk user: ", user);
@@ -66,6 +86,41 @@ const Profile = () => {
     <>
       {user && userInfo !== null && (
         <>
+          <div className="flex flex-col justify-center sm:flex-row sm:space-x-4 p-10">
+            <div className="p-2">
+              <StyledLinkButton
+                href="/form"
+                label="Quiero Apadrinar"
+                bgColor="bg-purple-600"
+                textColor="text-white"
+                hoverBgColor="bg-purple-200"
+                hoverTextColor="text-white-800"
+              />
+            </div>
+            <div className="p-2">
+              <StyledLinkButton
+                href="/"
+                label="Invitar a otros a sumarse"
+                bgColor="bg-purple-600"
+                textColor="text-white"
+                hoverBgColor="bg-purple-200"
+                hoverTextColor="text-white-800"
+                onClick={handleInviteClick}
+              />
+              {showShareButtons && (
+                <div
+                  className={`transition-opacity duration-1000 ease-out ${
+                    isLoaded ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  <div className="mt-2 sm:mt-4 sm:mb-2">
+                    <BouncingDownArrow />
+                  </div>
+                  <ShareButtons />
+                </div>
+              )}
+            </div>
+          </div>
           <div className="flex flex-col p-10">
             <Godfather mainInfo={user} profileInfo={userInfo["childrenInfo"]} />
             <KidsTable info={userInfo.childrenInfo.ahijados} />

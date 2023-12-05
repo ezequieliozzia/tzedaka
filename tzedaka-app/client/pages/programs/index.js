@@ -1,9 +1,32 @@
+import { useEffect, useState } from "react";
 import Link from "next/link.js";
 import programs from "../../public/mocks/programs.js";
+import StyledLinkButton from "@/components/StyledLinkButton";
+import BouncingDownArrow from "@/components/BouncingDownArrow";
+import ShareButtons from "@/components/ShareButtons";
 
 const Programs = () => {
+  const [showShareButtons, setShowShareButtons] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const handleInviteClick = (e) => {
+    e.preventDefault(); // Prevent redirection
+    setShowShareButtons((prev) => !prev); // Alternates visibility of ShareButtons
+  };
+
+  useEffect(() => {
+    let timeout;
+    if (showShareButtons) {
+      timeout = setTimeout(() => setIsLoaded(true), 50); // Establish isLoaded to true after 50ms
+    } else {
+      setIsLoaded(false); // Restablish isLoaded to false
+    }
+    return () => clearTimeout(timeout); // Clears timeout if component unmounts or if showShareButtons changes before timeout triggers
+  }, [showShareButtons]);
+
   return (
     <>
+        
       <div className={`text-3xl font-tzedaka-titles my-8 mx-10`}>
         ¿Qué significa ser un Padrino o Madrina?
       </div>
@@ -14,6 +37,41 @@ const Programs = () => {
         ayuda se brinca a través de los programas de la fundación Tzedaká para
         estudiantes en tres niveles: ABC para escolaridad primaria, IDEA para
         secundaria y UNI para estudiantes universitarios.
+      </div>
+      <div className="flex flex-col justify-center sm:flex-row sm:space-x-4 my-8 mx-10">
+        <div className="p-2">
+          <StyledLinkButton
+            href="/form"
+            label="Quiero Apadrinar"
+            bgColor="bg-purple-600"
+            textColor="text-white"
+            hoverBgColor="bg-purple-200"
+            hoverTextColor="text-white-800"
+          />
+        </div>
+        <div className="p-2">
+          <StyledLinkButton
+            href="/"
+            label="Invitar a otros a sumarse"
+            bgColor="bg-purple-600"
+            textColor="text-white"
+            hoverBgColor="bg-purple-200"
+            hoverTextColor="text-white-800"
+            onClick={handleInviteClick}
+          />
+          {showShareButtons && (
+            <div
+              className={`transition-opacity duration-1000 ease-out ${
+                isLoaded ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <div className="mt-2 sm:mt-4 sm:mb-2">
+                <BouncingDownArrow />
+              </div>
+              <ShareButtons />
+            </div>
+          )}
+        </div>
       </div>
       <div className={`text-3xl font-tzedaka-titles my-8 mx-10`}>
         ¡Conocé las historias de los chicos de cada programa!
