@@ -1,7 +1,5 @@
 import React from "react";
-import kids from "@/public/mocks/kids";
 import ProgramsCard from "./ProgramsCard";
-import avatars from "@/public/mocks/kids";
 
 const ProgramsGrid = ({ programs, kids, programId, avatars }) => {
   return (

@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import programs from "../../../public/mocks/programs.js";
 import avatars from "../../../public/mocks/kids";
 import ProgramBanner from "../../../components/programs/details/ProgramsBanner";
-import { universe45Light } from "../../../utils/fonts";
 import Spinner from "@/components/Spinner";
 import Carousel from "@/components/programs/Carousel";
 import EventService from "@/services/EventService";
@@ -29,7 +28,6 @@ const Post = () => {
               url: x.Imagen,
               name: x.Name,
               description: x.Descripcion,
-              // ...x,
             };
           })
         );
