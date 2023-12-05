@@ -1,9 +1,27 @@
 import React from "react";
 
-const ProgramsCard = ({ programs, kid, programId, avatars }) => {
-  const pickedAvatars = avatars.filter((x) => x.gender === kid.gender && x.programId == programs[programId].programName);
-  const randomImgs = Math.floor(Math.random() * pickedAvatars.length);
-  console.log("pickedImage: ", pickedAvatars[randomImgs]);
+const ProgramsCard = ({
+  programs,
+  kid,
+  programId,
+  avatars,
+  index,
+  indexes,
+}) => {
+  console.log("indexes: ", indexes);
+  const pickedAvatars = avatars.filter(
+    (x) =>
+      x.gender === kid.gender && x.programId == programs[programId].programName
+  );
+  // const myIndex = indexes.filter()
+  let pickedAvatar = null;
+  if (kid.gender === "Hombre") {
+    const maleIndexes = indexes["male"];
+    pickedAvatar = maleIndexes[index];
+  } else {
+    const femaleIndexes = indexes["female"];
+    pickedAvatar = femaleIndexes[index];
+  }
 
   return (
     <div
@@ -20,7 +38,7 @@ const ProgramsCard = ({ programs, kid, programId, avatars }) => {
         </div>
 
         <img
-          src={pickedAvatars[randomImgs].avatar.src}
+          src={pickedAvatars[pickedAvatar].avatar.src}
           width="150"
           height="150"
         />
