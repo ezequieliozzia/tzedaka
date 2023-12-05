@@ -44,10 +44,6 @@ const Profile = () => {
       const loadData = async () => {
         try {
           const childrenInfo = await ProfileService.fetchProfileInfo(email);
-          console.log("childrenInfo: ", childrenInfo);
-          if (Object.keys(childrenInfo).length === 0) {
-            setError(true);
-          }
           setUserInfo({ mainInfo: user, childrenInfo: childrenInfo });
           setLoading(false);
 
@@ -82,10 +78,20 @@ const Profile = () => {
         text="No pudimos los datos del usuario, intenta mas tarde."
       />
     );
+
+  const displaySponsored =
+    Object.keys(donations).length > 0 &&
+    Object.keys(userInfo["childrenInfo"]).length > 0;
+
   return (
     <>
       {user && userInfo !== null && (
         <>
+          {!displaySponsored && (
+            <div className="flex items-center justify-center mt-10 font-tzedaka-body">
+              Aún no tenés ahijados.
+            </div>
+          )}
           <div className="flex flex-col justify-center sm:flex-row sm:space-x-4 p-10">
             <div className="p-2">
               <StyledLinkButton
@@ -122,10 +128,15 @@ const Profile = () => {
             </div>
           </div>
           <div className="flex flex-col p-10">
-            <Godfather mainInfo={user} profileInfo={userInfo["childrenInfo"]} />
-            <KidsTable info={userInfo.childrenInfo.ahijados} />
-            {Object.keys(donations).length !== 0 && (
-              <DonationChart imgProperties={donations} />
+            {displaySponsored && (
+              <>
+                <Godfather
+                  mainInfo={user}
+                  profileInfo={userInfo["childrenInfo"]}
+                />
+                <KidsTable info={userInfo.childrenInfo.ahijados} />
+                <DonationChart imgProperties={donations} />
+              </>
             )}
           </div>
         </>
