@@ -1,7 +1,7 @@
 import React from "react";
 
 const ProgramsCard = ({ programs, kid, programId, avatars }) => {
-  const pickedAvatars = avatars.filter((x) => x.gender === kid.gender);
+  const pickedAvatars = avatars.filter((x) => x.gender === kid.gender && x.programId == programs[programId].programName);
   const randomImgs = Math.floor(Math.random() * pickedAvatars.length);
   console.log("pickedImage: ", pickedAvatars[randomImgs]);
 
