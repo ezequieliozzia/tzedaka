@@ -2,22 +2,7 @@ import React, { useState } from "react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import { RxDot, RxDotFilled } from "react-icons/rx";
 
-const Carousel = () => {
-  const slides = [
-    {
-      url: "https://images.squarespace-cdn.com/content/v1/5b7c56e255b02c683659fe43/1538160281092-VL9JSJTT5W011B8SCSEL/children-raise.png?format=1500w",
-      description:
-        "ABC garantiza acceso digno a educación a niños en etapa inicial y primaria, acompáñanos",
-      name: "Inauguración programa ABC",
-    },
-    {
-      url: "https://images.healthshots.com/healthshots/en/uploads/2023/04/23115552/children-1-770x436.jpg",
-      description:
-        "IDEA garantiza educación digna a jóvenes y adolescentes de secundaria y bachillerato",
-      name: "Inauguración programa IDEA",
-    },
-  ];
-
+const Carousel = ({ slides }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const prevSlide = () => {
