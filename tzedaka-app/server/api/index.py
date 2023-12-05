@@ -217,6 +217,41 @@ def donations():
 
         return jsonify({'data_x': data_x, 'data_y': data_y })
 
+
+@app.route('/create_lead', methods=['POST'])
+@cross_origin()
+def create_lead():
+    try:
+        # Extract data from the request
+
+        data = request.json
+
+        # Salesforce API request payload
+        payload = {
+            'FirstName': data.get('name'),
+            'LastName': data.get('surname'),
+            'Phone': data.get('phone'),
+            'MobilePhone': data.get('phone'),
+            'Company': data.get('name')+ data.get('surname'),
+            'Email': data.get('email'),
+            # 'Address': data.get('address'),
+            'npsp__CompanyPostalCode__c': data.get('zipcode'),
+            'npsp__CompanyState__c': data.get('state'),
+            'npsp__CompanyCountry__c': data.get('country')
+            # 'Company': data.get('company'),
+            # Add more fields as needed
+        }
+
+        # Create a Lead using simple-salesforce
+        sf.Lead.create(payload)
+
+        return jsonify({'success': True, 'message': 'Lead created successfully'})
+
+    except Exception as e:
+        return jsonify({'success': False, 'message': f'Error: {str(e)}'}), 500
+
+
+
 # Queries a implementar: 
 
 # dado un intervalo de tiempo 1 mes, 3 meses, 6 meses, 1 año 2, 3 etc.
