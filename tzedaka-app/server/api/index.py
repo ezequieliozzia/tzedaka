@@ -189,12 +189,13 @@ def donations():
     if request.method == 'POST':
         email = request.json['email']
         error = None
-        start_date = []
-        end_date = []
-        data_amount = []
-        frequency = []
-        period = []
+        data_x = []
+        data_y = []
 
+        today = date.today()
+        beginning_date = today - relativedelta(years=3)
+
+        from_date = beginning_date.strftime("%Y-%m-%d")
 
         if not email:
             error = 'Name is required.'
@@ -202,66 +203,19 @@ def donations():
         if error is None:
             try:
                 # query = sf.query("SELECT Name, npe03__Amount__c,npsp__StartDate__c,npsp__EndDate__c, npe03__Date_Established__c, npsp__InstallmentFrequency__c, npe03__Installment_Period__c, npe03__Total_Paid_Installments__c, RecordTypeId, npe03__Paid_Amount__c FROM npe03__Recurring_Donation__c WHERE npe03__Contact__r.Email = '" + email + "'")
-                query = sf.query("SELECT npe03__Amount__c,npsp__StartDate__c,npsp__EndDate__c, npsp__InstallmentFrequency__c, npe03__Installment_Period__c FROM npe03__Recurring_Donation__c WHERE npe03__Contact__r.Correo_para_comunicaciones__c = '" + email + "'")
+                query = sf.query(f"SELECT Amount, CloseDate from Opportunity where npe03__Recurring_Donation__r.RecordType.Name = 'Padrinazgos' and  StageName in ('Closed won','Cerrado ganada') and CloseDate >= {from_date} and npsp__Primary_Contact__r.Correo_para_comunicaciones__c = '{email}'")
 
                 results = []
 
                 for entry in range(0, len(query["records"])):
-                    start_date = query["records"][entry]["npsp__StartDate__c"]
-                    end_date = query["records"][entry]["npsp__EndDate__c"]
-                    data_amount = query["records"][entry]["npe03__Amount__c"]
-                    frequency = query["records"][entry]["npsp__InstallmentFrequency__c"]
-                    period = query["records"][entry]["npe03__Installment_Period__c"]
-
-                    start_date = datetime.strptime(start_date, '%Y-%m-%d')
-                    if end_date != None:
-                        end_date = datetime.strptime(end_date, '%Y-%m-%d')
-                    else:
-                        end_date = datetime.today().replace(hour=0, minute=0, second=0, microsecond=0)
-                    frequency = int(frequency)
-
-                    new_dates = []
-                    curr_date = start_date
-                    if period == 'Yearly':
-                        while curr_date <= end_date:
-                            new_dates.append(curr_date)
-                            curr_date = curr_date + relativedelta(years=frequency)         
-                    if period == 'Monthly':
-                        while curr_date <= end_date:
-                            new_dates.append(curr_date)
-                            curr_date = curr_date + relativedelta(months=frequency)    
-                    
-                    donations = [data_amount] * len(new_dates)
-
-                    results.append([new_dates, donations])
-
-
-                # this is for checking if it has already been added. 
-                # if it was, just sum the donations for that day.
-                # else create a new one.
-                dates_proceesed = []
-                donations_processed = []
-
-                for dates, donations in results:
-                    for idx, date in enumerate(dates):
-                        if date not in dates_proceesed:
-                            dates_proceesed.append(date)
-                            donations_processed.append(donations[idx])
-                        else: 
-                            #search index of already existing date ? 
-                            j = dates_proceesed.index(date)
-                            donations_processed[j] += donations[idx]
-                            # donations_processed.append(donations[i])
-
-                # from start date to end date every freqs * year/month
+                    data_y.append(query["records"][entry]["Amount"])
+                    data_x.append(query["records"][entry]["CloseDate"])
                 
             except:
                 data = []
-            
-   
 
 
-        return jsonify({'data_x': list(map(lambda x: x.strftime('%Y-%m-%d'),dates_proceesed)), 'data_y': donations_processed })
+        return jsonify({'data_x': data_x, 'data_y': data_y })
 
 # Queries a implementar: 
 
