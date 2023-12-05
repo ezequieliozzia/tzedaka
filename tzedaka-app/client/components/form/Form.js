@@ -10,9 +10,14 @@ const FormComponent = () => {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
-    const response = await fetch("/api/submit", {
+
+    // const headers =
+    const response = await fetch("/api/create_lead", {
       method: "POST",
-      body: formData,
+      body: JSON.stringify(Object.fromEntries(formData)),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
 
     // Handle response if necessary
