@@ -13,7 +13,6 @@ const ProgramsGrid = ({ programs, kids, programId, avatars }) => {
             programId={programId}
             avatars={avatars}
           />
-          {/* <div className="font-tzedaka-body sm:hidden">{kid.description}</div> */}
         </div>
       ))}
     </div>

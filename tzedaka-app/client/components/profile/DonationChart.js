@@ -11,7 +11,6 @@ const DonationChart = ({ imgProperties }) => {
     chart: {
       id: "apexchart-example",
       height: 48,
-      // width: "100%",
     },
     xaxis: {
       categories: imgProperties.xaxis,
@@ -25,26 +24,30 @@ const DonationChart = ({ imgProperties }) => {
   };
 
   const series = [imgProperties.series];
+  const sum_series = series[0].data.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 
-  // const series = [
-  //   {
-  //     name: "series-1",
-  //     data: [30, 40, 35, 50, 49, 60, 70, 91, 125],
-  //   },
-  // ];
+  function formatNumber(num) {
+    if (num >= 1000000) {
+      return (num / 1000000).toFixed(2) + 'M';
+    } else if (num >= 1000) {
+      return (num / 1000).toFixed(2) + 'k';
+    } else {
+      return num.toString();
+    }
+  }
+
   return (
-    // <div>
     <div className="w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
       <div className="flex justify-between">
         <div>
           <h5 className="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">
-            32.4k
+            {formatNumber(sum_series)}
           </h5>
           <p className="text-base font-normal text-gray-500 dark:text-gray-400">
-            Users this week
+            Acumulado en los últimos 3 años
           </p>
         </div>
-        <div className="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 dark:text-green-500 text-center">
+        {/* <div className="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 dark:text-green-500 text-center">
           12%
           <svg
             className="w-3 h-3 ml-1"
@@ -61,10 +64,10 @@ const DonationChart = ({ imgProperties }) => {
               d="M5 13V1m0 0L1 5m4-4 4 4"
             />
           </svg>
-        </div>
+        </div> */}
       </div>
       <ApexCharts options={option} series={series} type="area" height={"400"} />
-      <div className="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
+      {/* <div className="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
         <div className="flex justify-between items-center pt-5">
           <button
             id="dropdownDefaultButton"
@@ -163,8 +166,8 @@ const DonationChart = ({ imgProperties }) => {
           </a>
         </div>
       </div>
+    </div> */}
     </div>
-    // </div>
   );
 };
 
