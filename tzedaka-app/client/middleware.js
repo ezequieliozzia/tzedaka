@@ -7,6 +7,7 @@ export default authMiddleware({
     "/form",
     "/programs/details/(.*)",
     "/api/events",
+    "/api/beneficiaries",
   ],
 });
 
