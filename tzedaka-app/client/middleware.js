@@ -8,6 +8,7 @@ export default authMiddleware({
     "/programs/details/(.*)",
     "/api/events",
     "/api/beneficiaries",
+    "/signInPage"
   ],
 });
 

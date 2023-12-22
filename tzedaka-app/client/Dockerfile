@@ -1,5 +1,8 @@
 # Use an official Node.js runtime as a parent image
-FROM node:18-alpine
+FROM node:latest
+
+# Environment variables #TODO insert here NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY and CLERK_SECRET_KEY
+ENV NODE_ENV=development
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
