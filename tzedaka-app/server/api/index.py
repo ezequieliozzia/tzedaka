@@ -13,24 +13,24 @@ load_dotenv()
 # WINDOWS: python -m flask --app index run --debug
 # MAC: flask run
 
-sf = Salesforce( username        = os.getenv('FFG_USERNAME'),
-                 password        = os.getenv('FFG_PASSWORD'),
-                 instance        = os.getenv('FFG_INSTANCE'),
-                 consumer_key    = os.getenv('FFG_CONSUMER_KEY'),
-                 consumer_secret = os.getenv('FFG_CONSUMER_SECRET'))
+# sf = Salesforce( username        = os.getenv('FFG_USERNAME'),
+#                  password        = os.getenv('FFG_PASSWORD'),
+#                  instance        = os.getenv('FFG_INSTANCE'),
+#                  consumer_key    = os.getenv('FFG_CONSUMER_KEY'),
+#                  consumer_secret = os.getenv('FFG_CONSUMER_SECRET'))
 
-queryAhijados = sf.query("SELECT Name, Edad__c, Programa__c, PAG_Descripci_n__c, C_digo_del_beneficiario__c FROM Beneficiario__c")
-queryPadrinazgos = sf.query("SELECT Ahijado__c FROM Padrinazgo__c")
+# queryAhijados = sf.query("SELECT Name, Edad__c, Programa__c, PAG_Descripci_n__c, C_digo_del_beneficiario__c FROM Beneficiario__c")
+# queryPadrinazgos = sf.query("SELECT Ahijado__c FROM Padrinazgo__c")
 
-activeUser = 0
+# activeUser = 0
 
 app = Flask(__name__)
 
-CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
+# CORS(app)
+# app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route("/")
-@cross_origin()
+# @cross_origin()
 def home():
     return "Home"
 
