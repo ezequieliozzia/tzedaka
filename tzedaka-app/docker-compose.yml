@@ -1,0 +1,6 @@
+services:
+  web:
+    container_name: users-service
+    build: .
+    ports:
+      - 8000:8000

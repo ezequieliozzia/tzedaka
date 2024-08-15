@@ -26,7 +26,7 @@ activeUser = 0
 
 app = Flask(__name__)
 
-CORS(app, resources={r"/*": {"origins": "https://tzedaka-neon.vercel.app"}})
+CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route("/")
